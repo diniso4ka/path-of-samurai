@@ -1,5 +1,0 @@
-const ROUTE_PROFILE = '/profile'
-const ROUTE_MESSAGES = '/messages'
-const ROUTE_NEWS = '/news'
-const ROUTE_MUSICS = '/musics'
-const ROUTE_SETTINGS = '/settings'
