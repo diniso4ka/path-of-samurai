@@ -1,0 +1,49 @@
+@import 'style/global.css';
+@import 'style/themes/normal.css';
+@import 'style/reset.css';
+
+.app {
+   background: var(--bg-color);
+   min-height: 100vh;
+   color: var(--inverted-primary-color);
+   font-size: var(--font-size-m);
+}
+
+.navbar-wrapper {
+   height: var(--navbar-height);
+   background: var(--inverted-bg-color);
+}
+
+.content-wrapper {
+   display: flex;
+}
+
+.sidebar-wrapper {
+   width: var(--sidebar-width);
+   height: calc(100vh - var(--navbar-height));
+   background: var(--inverted-bg-color);
+}
+
+.sidebar-wrapper li {
+   margin: 0 0 10px 10px;
+   font-size: var(--font-size-l);
+}
+
+.page-wrapper {
+   flex-grow: 1;
+}
+
+.info-wrapper {
+   margin: 20px;
+
+   display: flex;
+}
+
+.avatar {
+   width: 300px;
+   height: 300px;
+   background-image: url('https://i.pinimg.com/originals/76/2c/dc/762cdcc21c11048ae8725635d22827ba.jpg');
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+}
