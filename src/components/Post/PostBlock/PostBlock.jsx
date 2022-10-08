@@ -9,7 +9,10 @@ const PostBlock = () => {
    return (
       <section className={s.wrapper}>
          <AddPostBlock />
-         <PostItem />
+         <PostItem name={'Денис'} text={'Привет я гуль'} avatar={'https://www.peoples.ru/character/movie/shrek/shrek_4.jpg'} />
+         <PostItem name={'Денис'} text={'Привет я шрек'} />
+         <PostItem name={'Денис'} text={'Привет я сруль и я очень люблю смотреть анимеsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss'} />
+
       </section>
    )
 }

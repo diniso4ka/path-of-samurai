@@ -1,5 +1,6 @@
 .wrapper {
    padding: 10px;
+   margin-bottom: 10px;
    display: flex;
    background-color: var(--inverted-bg-color);
    width: fit-content;
@@ -9,15 +10,19 @@
 .avatar {
    width: 50px;
    height: 50px;
-   background-image: url('https://www.peoples.ru/character/movie/shrek/shrek_4.jpg');
-   background-position: center;
-   background-size: cover;
    border-radius: 30px;
-   background-repeat: no-repeat;
    margin: 0 10px 0 0;
+   background-color: var(--bg-color);
 
 }
 
 .text {
    font-size: var(--font-size-s);
+   max-width: calc(90vw - var(--sidebar-width));
+   word-wrap: normal;
+   overflow-wrap: break-word;
+}
+
+.name {
+   font-size: var(--font-size-m);
 }

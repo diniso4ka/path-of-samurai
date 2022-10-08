@@ -1,6 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Sidebar from './components/Sidebar/Sidebar';
+import Dialogs from './pages/Dialogs/Dialogs';
 import Profile from './pages/Profile/Profile';
 
 function App() {
@@ -9,7 +10,8 @@ function App() {
       <Navbar />
       <section className='content-wrapper'>
         <Sidebar />
-        <Profile />
+        {/* <Profile /> */}
+        <Dialogs />
       </section>
     </div>
   );

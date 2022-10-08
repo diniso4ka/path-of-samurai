@@ -13,3 +13,7 @@
 .content-wrapper {
    display: flex;
 }
+
+.page_wrapper {
+   max-width: calc(100vh - var(--sidebar-width));
+}
