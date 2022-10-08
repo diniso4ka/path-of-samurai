@@ -1,9 +1,9 @@
-import '../../App.css'
+import s from './Navbar.module.css'
 import React from 'react'
 
 const Navbar = () => {
    return (
-      <header className='navbar-wrapper'>
+      <header className={s.navbar_wrapper}>
          <div>
 
          </div>

@@ -1,0 +1,23 @@
+.wrapper {
+   padding: 10px;
+   display: flex;
+   background-color: var(--inverted-bg-color);
+   width: fit-content;
+   border-radius: 10px;
+}
+
+.avatar {
+   width: 50px;
+   height: 50px;
+   background-image: url('https://www.peoples.ru/character/movie/shrek/shrek_4.jpg');
+   background-position: center;
+   background-size: cover;
+   border-radius: 30px;
+   background-repeat: no-repeat;
+   margin: 0 10px 0 0;
+
+}
+
+.text {
+   font-size: var(--font-size-s);
+}

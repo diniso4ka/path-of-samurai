@@ -1,13 +1,19 @@
 :root {
    --font-family-main: Consolas, 'Times New Roman', serif;
 
-   --font-size-m: 16px;
-   --font-size-l: 24px;
-
-   --font-size-l: 24px;
-   --font-line-l: 32px;
+   --font-size-s: 16px;
+   --font-size-m: 24px;
+   --font-size-l: 32px;
 
    /* Размеры */
    --navbar-height: 50px;
    --sidebar-width: 300px;
+   --avatar-width: 300px;
+   --avatar-height: 300px;
+
+
+   /* Эффекты */
+   --font-hover-color: rgb(250, 161, 28);
+   --font-active-color: rgb(255, 230, 0);
+   --default-transition: 0.3s;
 }

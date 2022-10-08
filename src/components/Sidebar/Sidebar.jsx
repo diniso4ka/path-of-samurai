@@ -1,17 +1,17 @@
 import React from 'react'
-import '../../App.css'
+import s from './Sidebar.module.css'
 
 const Sidebar = () => {
    return (
-      <section className='sidebar-wrapper'>
-         <ul>
-            <li>Profile</li>
+      <nav className={s.sidebar_wrapper}>
+         <ul className={s.links}>
+            <li className={`${s.links_item} ${s.active}`} >Profile</li>
             <li>Messages</li>
             <li>News</li>
             <li>Musics</li>
             <li>Settings</li>
          </ul>
-      </section>
+      </nav>
    )
 }
 

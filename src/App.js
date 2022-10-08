@@ -1,7 +1,7 @@
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import Sidebar from './components/Sidebar/Sidebar';
-import Main from './pages/Main/Main';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <Navbar />
       <section className='content-wrapper'>
         <Sidebar />
-        <Main />
+        <Profile />
       </section>
     </div>
   );
