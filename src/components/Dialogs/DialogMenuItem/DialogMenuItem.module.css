@@ -1,0 +1,32 @@
+.wrapper {
+   padding: 10px;
+   margin: 10px auto;
+   display: flex;
+   background-color: var(--bg-secondary-color);
+   width: 95%;
+   border-radius: 10px;
+}
+
+.avatar {
+   width: 50px;
+   height: 50px;
+   border-radius: 30px;
+   margin: 0 10px 0 0;
+   background-color: var(--bg-color);
+
+}
+
+.text {
+   font-size: var(--font-size-s);
+   max-width: calc(90vw - var(--sidebar-width));
+   word-wrap: normal;
+   overflow-wrap: break-word;
+}
+
+.name {
+   font-size: var(--font-size-m);
+}
+
+.active {
+   background-color: var(--bg-active-color);
+}

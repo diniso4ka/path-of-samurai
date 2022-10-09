@@ -2,6 +2,15 @@
 @import 'style/themes/normal.css';
 @import 'style/reset.css';
 
+a {
+   color: var(--inverted-primary-color);
+   text-decoration: none;
+}
+
+html {
+   overflow: hidden;
+}
+
 .app {
    font-family: var(--font-family-main);
    background: var(--bg-color);

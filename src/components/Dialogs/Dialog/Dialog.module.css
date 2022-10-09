@@ -1,0 +1,10 @@
+.wrapper {
+   background: var(--bg-color);
+   width: calc((100vw - var(--sidebar-width)) / 2);
+   height: calc(100vh - var(--navbar-height));
+}
+
+.message_items {
+   max-height: calc(100vh - var(--navbar-height) - var(--input-message-height));
+   overflow-y: scroll;
+}

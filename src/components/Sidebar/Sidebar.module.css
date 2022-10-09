@@ -4,12 +4,15 @@
    background: var(--inverted-bg-color);
 }
 
+
 .sidebar_wrapper li {
    padding: 10px;
    font-size: var(--font-size-m);
    cursor: pointer;
    transition: var(--default-transition) ease-in-out;
+   text-decoration: none;
 }
+
 
 .sidebar_wrapper li:hover {
    color: var(--font-hover-color);

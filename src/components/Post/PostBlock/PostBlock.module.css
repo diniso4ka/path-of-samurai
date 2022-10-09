@@ -1,1 +1,9 @@
-.wrapper {}
+.wrapper {
+   margin: 0;
+}
+
+.post_items {
+   margin: 0;
+   max-height: calc(100vh / 2.07);
+   overflow-y: scroll;
+}

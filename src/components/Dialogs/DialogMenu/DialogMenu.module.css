@@ -1,0 +1,10 @@
+.wrapper {
+   width: calc((100vw - var(--sidebar-width)) / 2);
+   height: calc(100vh - var(--navbar-height));
+   background-color: var(--bg-color);
+   border-right: 1px rgba(1, 1, 1, 0.2) solid;
+}
+
+.title {
+   padding: 20px;
+}
