@@ -4,11 +4,11 @@ import { publicRoutes } from './routes'
 import * as routes from '../utils/consts'
 
 
-const AppRouter = () => {
+const AppRouter = ({ data }) => {
    return (
       <Routes>
          {publicRoutes.map(({ path, Component }) =>
-            <Route key={path} path={path} element={Component} />
+            <Route data={data} key={path} path={path} element={<Component data={data} />} />
          )}
          <Route path='*' element={<Navigate to={routes.ROUTE_PROFILE} />} />
       </Routes>

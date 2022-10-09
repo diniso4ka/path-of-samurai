@@ -7,11 +7,11 @@ import * as routes from '../utils/consts'
 export const publicRoutes = [
    {
       path: routes.ROUTE_PROFILE,
-      Component: <Profile />
+      Component: Profile
    },
    {
       path: routes.ROUTE_DIALOGS,
-      Component: <Dialogs />
+      Component: Dialogs
    }
 ]
 
