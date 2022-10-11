@@ -1,3 +1,4 @@
+import { rerenterEntireTree } from '../render'
 
 
 let state = {
@@ -22,6 +23,17 @@ let state = {
       { name: 'jenya', message: 'Ouuououwh kirusma', id: 4 },
       { name: 'kolya', message: 'Hello no no no no', id: 5 },
    ]
+}
+
+export const addPost = (text) => {
+   const newPost = {
+      id: state.posts.length - 1,
+      message: text,
+      avatar: '',
+      name: 'unknown'
+   }
+   state.posts.push(newPost)
+   rerenterEntireTree(state)
 }
 
 export default state
