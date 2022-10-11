@@ -1,13 +1,24 @@
 import React from 'react'
 import s from './AddPostBlock.module.css'
 
-const AddPostBlock = ({ addPost }) => {
-   const [text, setText] = React.useState('')
-
+const AddPostBlock = ({ addPost, data, updateNewPostText }) => {
+   const newPostElement = React.useRef()
+   const createPost = () => {
+      let text = newPostElement.current.value
+      addPost(text)
+   }
+   const onPostChange = () => {
+      let text = newPostElement.current.value
+      updateNewPostText(text)
+   }
    return (
       <section className={s.wrapper}>
-         <input value={text} onChange={(e) => setText(e.target.value)} type='text' />
-         <button onClick={() => addPost(text)}>send</button>
+         <input
+            ref={newPostElement}
+            value={data.newPostText}
+            onChange={onPostChange}
+            type='text' />
+         <button onClick={createPost}>send</button>
       </section>
    )
 }

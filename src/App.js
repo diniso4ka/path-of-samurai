@@ -7,7 +7,7 @@ import Sidebar from './components/Sidebar/Sidebar';
 import AppRouter from './Routes/AppRouter';
 
 
-function App({ data, addPost }) {
+function App({ data, addPost, updateNewPostText }) {
 
 
 
@@ -17,7 +17,7 @@ function App({ data, addPost }) {
         <Navbar />
         <section className='content-wrapper'>
           <Sidebar />
-          <AppRouter data={data} addPost={addPost} />
+          <AppRouter data={data} addPost={addPost} updateNewPostText={updateNewPostText} />
         </section>
       </div>
     </BrowserRouter>

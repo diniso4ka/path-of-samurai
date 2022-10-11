@@ -3,14 +3,13 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 
 
-import { addPost } from './redux/state';
+import { addPost, updateNewPostText } from './redux/state';
 
 
-
+const root = ReactDOM.createRoot(document.getElementById('root'));
 export let rerenterEntireTree = (state) => {
-   const root = ReactDOM.createRoot(document.getElementById('root'));
    root.render(
-      <App data={state} addPost={addPost} />
+      <App data={state} addPost={addPost} updateNewPostText={updateNewPostText} />
    );
 
 }
