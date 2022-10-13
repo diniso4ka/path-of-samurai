@@ -1,18 +1,18 @@
 import { type } from '@testing-library/user-event/dist/type'
 import React from 'react'
+import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../../redux/store'
 import s from './AddPostBlock.module.css'
 
 const AddPostBlock = ({ store }) => {
    const newPostElement = React.useRef()
    const state = store.getState()
    const createPost = () => {
-      let text = newPostElement.current.value
-      store.dispatch({ type: 'ADD-POST', text })
+      store.dispatch(addPostActionCreator())
    }
    const onPostChange = () => {
       let text = newPostElement.current.value
-      console.log(text);
-      store.dispatch({ type: 'UPDATE-NEW-POST-TEXT', text })
+      console.log(updateNewPostTextActionCreator(text))
+      store.dispatch(updateNewPostTextActionCreator(text))
    }
    return (
       <section className={s.wrapper}>
