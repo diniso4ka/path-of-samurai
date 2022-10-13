@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import state, { subscribe } from './redux/state';
+import store from './redux/state';
 
 
-import { addPost, updateNewPostText } from './redux/state';
+
 
 
 
@@ -14,10 +14,10 @@ import { addPost, updateNewPostText } from './redux/state';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 export let rerenderEntireTree = () => {
    root.render(
-      <App data={state} addPost={addPost} updateNewPostText={updateNewPostText} />
+      <App store={store} />
    );
 }
-rerenderEntireTree(state)
-subscribe(rerenderEntireTree)
+rerenderEntireTree(store.getState())
+store.subscribe(rerenderEntireTree)
 
 

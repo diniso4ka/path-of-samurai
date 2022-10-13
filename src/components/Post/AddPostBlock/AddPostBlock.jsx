@@ -1,21 +1,22 @@
 import React from 'react'
 import s from './AddPostBlock.module.css'
 
-const AddPostBlock = ({ addPost, data, updateNewPostText }) => {
+const AddPostBlock = ({ store }) => {
    const newPostElement = React.useRef()
+   const state = store.getState()
    const createPost = () => {
       let text = newPostElement.current.value
-      addPost(text)
+      store.addPost(text)
    }
    const onPostChange = () => {
       let text = newPostElement.current.value
-      updateNewPostText(text)
+      store.updateNewPostText(text)
    }
    return (
       <section className={s.wrapper}>
          <input
             ref={newPostElement}
-            value={data.newPostText}
+            value={state.profilePage.newPostText}
             onChange={onPostChange}
             type='text' />
          <button onClick={createPost}>send</button>

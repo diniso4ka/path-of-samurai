@@ -5,12 +5,12 @@ import AddPostBlock from '../AddPostBlock/AddPostBlock'
 import PostItem from '../PostItem/PostItem'
 
 
-const PostBlock = ({ data, addPost, updateNewPostText }) => {
+const PostBlock = ({ store }) => {
    return (
       <section className={s.wrapper}>
-         <AddPostBlock data={data} updateNewPostText={updateNewPostText} addPost={addPost} />
+         <AddPostBlock store={store} />
          <div className={s.post_items}>
-            {data.posts.map((user) => <PostItem name={user.name} text={user.message} avatar={user.avatar ? user.avatar : ''} key={user.id} />)}
+            {store.getState().profilePage.posts.map((user) => <PostItem name={user.name} text={user.message} avatar={user.avatar ? user.avatar : ''} key={user.id} />)}
          </div>
       </section>
    )

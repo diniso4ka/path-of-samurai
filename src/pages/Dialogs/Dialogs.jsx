@@ -4,11 +4,11 @@ import DialogMenu from '../../components/Dialogs/DialogMenu/DialogMenu'
 import s from './Dialogs.module.css'
 
 
-const Dialogs = ({ data }) => {
+const Dialogs = ({ state }) => {
    return (
       <main className={`${s.dialogs_wrapper} ${s.page_wrapper}`}>
-         <DialogMenu data={data} />
-         <Dialog data={data} />
+         <DialogMenu state={state} />
+         <Dialog state={state} />
       </main>
    )
 }
