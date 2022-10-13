@@ -1,3 +1,4 @@
+import { type } from '@testing-library/user-event/dist/type'
 import React from 'react'
 import s from './AddPostBlock.module.css'
 
@@ -6,11 +7,12 @@ const AddPostBlock = ({ store }) => {
    const state = store.getState()
    const createPost = () => {
       let text = newPostElement.current.value
-      store.addPost(text)
+      store.dispatch({ type: 'ADD-POST', text })
    }
    const onPostChange = () => {
       let text = newPostElement.current.value
-      store.updateNewPostText(text)
+      console.log(text);
+      store.dispatch({ type: 'UPDATE-NEW-POST-TEXT', text })
    }
    return (
       <section className={s.wrapper}>

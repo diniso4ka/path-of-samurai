@@ -32,11 +32,14 @@ const store = {
    },
    getState() {
       return this._state
-   }
-   ,
+   },
+   subscribe(observer) {
+      this._callSubscriber = observer
+   },
    _callSubscriber() {
       console.log('State changed')
    },
+
    addPost(text) {
       const newPost = {
          id: this._state.profilePage.posts.length,
@@ -52,8 +55,22 @@ const store = {
       this._state.profilePage.newPostText = text
       this._callSubscriber(this._state)
    },
-   subscribe(observer) {
-      this._callSubscriber = observer
+
+   dispatch(action) {
+      if (action.type === 'ADD-POST') {
+         const newPost = {
+            id: this._state.profilePage.posts.length,
+            message: action.text,
+            avatar: '',
+            name: 'unknown'
+         }
+         this._state.profilePage.posts.push(newPost)
+         this._state.profilePage.newPostText = ''
+         this._callSubscriber(this._state)
+      } else if (action.type == 'UPDATE-NEW-POST-TEXT') {
+         this._state.profilePage.newPostText = action.text
+         this._callSubscriber(this._state)
+      }
    }
 }
 
