@@ -1,6 +1,6 @@
 import { type } from '@testing-library/user-event/dist/type'
 import React from 'react'
-import { addPostCreator, updateNewPostTextCreator } from '../../../../redux/store'
+import { addPostCreator, updateNewPostTextCreator } from '../../../../redux/reducers/profileReducer'
 import s from './AddPostBlock.module.css'
 
 const AddPostBlock = ({ store }) => {

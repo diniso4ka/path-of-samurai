@@ -2,11 +2,6 @@ import dialogsReducer from './reducers/dialogsReducer'
 import profileReducer from './reducers/profileReducer'
 import sidebarReducer from './reducers/sidebarReducer'
 
-export const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT'
-export const SEND_MESSAGE = 'SEND-MESSAGE'
-export const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-export const ADD_POST = 'ADD-POST'
-
 
 
 const store = {
@@ -64,18 +59,7 @@ const store = {
 }
 
 
-export const addPostCreator = () => (
-   { type: ADD_POST }
-)
-export const updateNewPostTextCreator = (text) => (
-   { type: UPDATE_NEW_POST_TEXT, text }
-)
-export const sendMessageCreator = () => (
-   { type: SEND_MESSAGE }
-)
-export const updateNewMessageTextCreator = (text) => (
-   { type: UPDATE_NEW_MESSAGE_TEXT, text }
-)
+
 
 
 

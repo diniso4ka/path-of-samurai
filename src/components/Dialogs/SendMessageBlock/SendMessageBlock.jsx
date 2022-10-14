@@ -1,5 +1,5 @@
 import React from 'react'
-import { sendMessageCreator, updateNewMessageTextCreator } from '../../../redux/store'
+import { sendMessageCreator, updateNewMessageTextCreator } from '../../../redux/reducers/dialogsReducer'
 import s from './SendMessageBlock.module.css'
 
 const SendMessageBlock = ({ state, store }) => {
