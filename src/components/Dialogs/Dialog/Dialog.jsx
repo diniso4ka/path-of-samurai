@@ -3,15 +3,15 @@ import React from 'react'
 import MessageItem from '../MessageItem/MessageItem'
 import SendMessageBlock from '../SendMessageBlock/SendMessageBlock'
 
-const Dialog = ({ state }) => {
+const Dialog = ({ state, store }) => {
 
    return (
       <section className={s.wrapper}>
          <div className={s.message_items}>
-            {state.messages.map((message) => <MessageItem name={message.name} text={message.message} />)}
+            {state.messages.map((message) => <MessageItem key={message.id} name={message.name} text={message.message} />)}
 
          </div>
-         <SendMessageBlock />
+         <SendMessageBlock state={state} store={store} />
 
       </section>
    )

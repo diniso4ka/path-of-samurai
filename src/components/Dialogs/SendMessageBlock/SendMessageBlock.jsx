@@ -1,12 +1,22 @@
 import React from 'react'
+import { sendMessageCreator, updateNewMessageTextCreator } from '../../../redux/store'
 import s from './SendMessageBlock.module.css'
 
-const SendMessageBlock = () => {
-   const [text, setText] = React.useState('')
+const SendMessageBlock = ({ state, store }) => {
+   const newMessageElement = React.useRef()
+
+   const sendMessage = () => {
+      store.dispatch(sendMessageCreator())
+   }
+
+   const onTextChange = () => {
+      const text = newMessageElement.current.value
+      store.dispatch(updateNewMessageTextCreator(text))
+   }
    return (
       <section className={s.wrapper}>
-         <input value={text} onChange={(e) => setText(e.target.value)} className={s.text_input} type='text' />
-         <button >send</button>
+         <input onChange={onTextChange} value={state.newMessageText} ref={newMessageElement} className={s.text_input} type='text' />
+         <button onClick={sendMessage}>send</button>
       </section>
    )
 }
