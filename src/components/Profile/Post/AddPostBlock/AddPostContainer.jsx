@@ -1,20 +1,24 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { addNewPost, updateNewPostText } from '../../../../redux/slices/profileSlice'
+import { connect } from 'react-redux'
 import AddPostBlock from './AddPostBlock'
 
-const AddPostContainer = () => {
-   const { newPostText } = useSelector((state) => state.profile)
-   const dispatch = useDispatch()
-   const createPost = () => {
-      dispatch(addNewPost())
+
+
+let mapStateToProps = (state) => {
+   return {
+      newPostText: state.dialogs.newPostText
    }
-   const onPostChange = (text) => {
-      dispatch(updateNewPostText(text))
-   }
-   return (
-      <AddPostBlock createPost={createPost} onPostChange={onPostChange} newPostText={newPostText} />
-   )
 }
 
-export default AddPostContainer
+let mapDispatchToProps = (dispatch) => {
+   return {
+      createPost: () => {
+         dispatch(addNewPost())
+      },
+      onPostChange: (text) => {
+         dispatch(updateNewPostText(text))
+      }
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddPostBlock)

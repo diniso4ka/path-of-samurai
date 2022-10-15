@@ -1,23 +1,24 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import { updateNewMessageText, sendMessage } from '../../../redux/slices/dialogsSlice'
+import { connect } from 'react-redux'
 import SendMessageBlock from './SendMessageBlock'
 
-const SendMessageContainer = () => {
-   const { newMessageText } = useSelector(state => state.dialogs)
-   const dispatch = useDispatch()
 
 
-   const onClickSend = () => {
-      dispatch(sendMessage())
+let mapStateToProps = (state) => {
+   return {
+      newMessageText: state.dialogs.newMessageText
    }
-
-   const onTextChange = (text) => {
-      dispatch(updateNewMessageText(text))
-   }
-   return (
-      <SendMessageBlock onClickSend={onClickSend} onTextChange={onTextChange} newMessageText={newMessageText} />
-   )
 }
 
-export default SendMessageContainer
+let mapDispatchToProps = (dispatch) => {
+   return {
+      sendMessage: () => {
+         dispatch(sendMessage())
+      },
+      onTextChange: (text) => {
+         dispatch(updateNewMessageText(text))
+      }
+   }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SendMessageBlock)
