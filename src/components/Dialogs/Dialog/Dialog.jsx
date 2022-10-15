@@ -1,8 +1,10 @@
 import s from './Dialog.module.css'
 import React from 'react'
 import MessageItem from '../MessageItem/MessageItem'
-import SendMessageBlock from '../SendMessageBlock/SendMessageBlock'
 import { useSelector } from 'react-redux'
+
+import SendMessageContainer from '../SendMessageBlock/SendMessageContainer'
+
 
 const Dialog = () => {
    const { messages } = useSelector(state => state.dialogs)
@@ -14,7 +16,7 @@ const Dialog = () => {
             {messages.map((message) => <MessageItem key={message.id} name={message.name} text={message.message} />)}
 
          </div>
-         <SendMessageBlock />
+         <SendMessageContainer />
 
       </section>
    )
