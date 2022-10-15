@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import store from './redux/store';
+import { store } from './redux/redux-store';
+import { Provider } from 'react-redux';
 
 
 
@@ -14,10 +15,15 @@ import store from './redux/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 export let rerenderEntireTree = () => {
    root.render(
-      <App store={store} />
+      <Provider store={store}>
+         <App />
+      </Provider>
    );
 }
 rerenderEntireTree(store.getState())
-store.subscribe(rerenderEntireTree)
+store.subscribe(() => {
+   let state = store.getState()
+   rerenderEntireTree(state)
+})
 
 

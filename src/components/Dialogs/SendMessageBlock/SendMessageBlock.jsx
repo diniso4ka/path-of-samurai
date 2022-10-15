@@ -1,22 +1,25 @@
 import React from 'react'
-import { sendMessageCreator, updateNewMessageTextCreator } from '../../../redux/reducers/dialogsReducer'
+import { useDispatch, useSelector } from 'react-redux'
 import s from './SendMessageBlock.module.css'
+import { updateNewMessageText, sendMessage } from '../../../redux/slices/dialogsSlice'
 
-const SendMessageBlock = ({ state, store }) => {
+const SendMessageBlock = () => {
+   const { newMessageText } = useSelector(state => state.dialogs)
+   const dispatch = useDispatch()
    const newMessageElement = React.useRef()
 
-   const sendMessage = () => {
-      store.dispatch(sendMessageCreator())
+   const onClickSend = () => {
+      dispatch(sendMessage())
    }
 
    const onTextChange = () => {
       const text = newMessageElement.current.value
-      store.dispatch(updateNewMessageTextCreator(text))
+      dispatch(updateNewMessageText(text))
    }
    return (
       <section className={s.wrapper}>
-         <input onChange={onTextChange} value={state.newMessageText} ref={newMessageElement} className={s.text_input} type='text' />
-         <button onClick={sendMessage}>send</button>
+         <input onChange={onTextChange} value={newMessageText} ref={newMessageElement} className={s.text_input} type='text' />
+         <button onClick={onClickSend}>send</button>
       </section>
    )
 }

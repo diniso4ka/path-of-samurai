@@ -4,11 +4,11 @@ import s from './Profile.module.css'
 import Info from '../../components/Profile/Info/Info'
 import PostBlock from '../../components/Profile/Post/PostBlock/PostBlock'
 
-const Profile = ({ store }) => {
+const Profile = () => {
    return (
       <main className={`${s.profile_wrapper} ${s.page_wrapper}`}>
          <Info />
-         <PostBlock store={store} />
+         <PostBlock />
       </main>
    )
 }
