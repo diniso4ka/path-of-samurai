@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './UserItem.module.css'
 
-const UserItem = ({avatar, name, followed, id}) => {
+const UserItem = ({avatar, name, followed, id}) => {                           
 	return (
 		<div className={`${s.user_wrapper} ${s.page_wrapper}`}>
 			<div className={s.main}>

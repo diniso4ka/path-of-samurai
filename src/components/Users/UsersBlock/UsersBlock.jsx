@@ -6,21 +6,23 @@ import userPhoto from '../../../assets/images/user.png'
 import UserItem from "../UserItem/UserItem";
 
 
-const UsersBlock = ({ users, follow, unfollow }) => {
-   const [data, setData]= React.useState([])
+const UsersBlock = ({ users, follow, unfollow,getUsers,checkUsers }) => {
+    const [load, setLoad]= React.useState(true)
    const fetchUsers = async ()=>{
       const res = await axios.get('https://social-network.samuraijs.com/api/1.0/users')
-      console.log(res.data.items);
-      setData((prev)=>[...res.data.items])
+     getUsers(res.data.items)
+       setLoad(false)
    }
    React.useEffect(()=>{
       fetchUsers()
    },[])
 
+
+
    return (
-      <main className={`${s.users_wrapper} ${s.page_wrapper}`}>
-         {data?data.map((user) =>  <UserItem avatar={user.photos.small ? user.photos.small: userPhoto} name={user.name} id={user.id}/>): null}
-      </main>
+      <main  className={`${s.users_wrapper} ${s.page_wrapper}`}>
+          {users?users.map((user) =>  <UserItem avatar={user.photos.small ? user.photos.small: userPhoto} name={user.name} id={user.id}/>): null}
+  </main>
    )
 }
 

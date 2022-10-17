@@ -4,8 +4,7 @@ import UsersContainer from '../../components/Users/UsersBlock/UsersContainer';
 import s from './Users.module.css'
 
 
-const Users = ({ users }) => {
-   console.log(users);
+const Users = () => {
    return (
       <main>
          <UsersContainer />

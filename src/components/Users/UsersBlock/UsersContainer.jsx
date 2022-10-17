@@ -22,7 +22,7 @@ let mapDispatchToProps = (dispatch) => {
       },
       getUsers: (users) => {
          dispatch(getUsers(users))
-      }
+      },
    }
 }
 
