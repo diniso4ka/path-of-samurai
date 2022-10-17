@@ -9,11 +9,9 @@ import AppRouter from './Routes/AppRouter';
 
 function App({ store }) {
 
-
-
   return (
     <BrowserRouter>
-      <div className="app normal">
+      <div className='app normal'>
         <Navbar />
         <section className='content-wrapper'>
           <Sidebar />

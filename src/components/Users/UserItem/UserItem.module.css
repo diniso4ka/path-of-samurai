@@ -1,0 +1,12 @@
+.user_wrapper{
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid var(--bg-secondary-color);
+    margin: 0 0 10px ;
+}
+
+.avatar {
+    width: 50px;
+}
+
+
