@@ -1,6 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import {follow, getTotalPages,getCurrentPage, getUsers, unfollow} from '../../../redux/slices/usersSlice'
+import {
+   follow,
+   getTotalPages,
+   getCurrentPage,
+   getUsers,
+   unfollow,
+   toggleLoading
+} from '../../../redux/slices/usersSlice'
 import UsersBlock from './UsersBlock'
 
 
@@ -11,6 +18,7 @@ let mapStateToProps = (state) => {
       users: state.users.users,
       totalPages: state.users.totalPages,
       currentPage: state.users.currentPage,
+      loading: state.users.loading
    }
 }
 
@@ -30,6 +38,9 @@ let mapDispatchToProps = (dispatch) => {
       },
       getTotalPages:(totalPages)=>{
          dispatch(getTotalPages(totalPages))
+      },
+      toggleLoading:(load)=>{
+         dispatch(toggleLoading(load))
       }
    }
 }

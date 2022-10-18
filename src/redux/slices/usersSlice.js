@@ -4,6 +4,7 @@ const initialState = {
    users: [],
    currentPage:1,
    totalPages: null,
+   loading: true,
 }
 
 const usersSlice = createSlice({
@@ -34,7 +35,7 @@ const usersSlice = createSlice({
          })
       }),
       getUsers: (state, action) => {
-         return { ...state, users: action.payload  }
+         return { ...state, users: action.payload, loading: false  }
       },
       getCurrentPage: (state, action) => {
          state.currentPage = action.payload
@@ -42,9 +43,12 @@ const usersSlice = createSlice({
       getTotalPages: (state, action) => {
         state.totalPages = action.payload
       },
+      toggleLoading:(state, action)=>{
+         state.loading = action.payload
+      }
 
    }
 })
 
-export const { follow, unfollow, getUsers,getCurrentPage,getTotalPages } = usersSlice.actions
+export const { follow, unfollow, getUsers,getCurrentPage,getTotalPages,toggleLoading } = usersSlice.actions
 export default usersSlice.reducer

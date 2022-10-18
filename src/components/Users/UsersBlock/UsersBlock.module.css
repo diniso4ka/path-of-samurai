@@ -1,6 +1,6 @@
 .page_wrapper {
    max-height: calc(100vh - var(--navbar-height) - 40px);
-   width: calc(100vw - var(--sidebar-width));
+   width: calc(100vw - var(--sidebar-width) - 40px);
    margin: 20px;
    overflow-y: scroll;
 }
