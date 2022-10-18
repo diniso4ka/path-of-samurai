@@ -16,7 +16,6 @@ import UsersBlock from './UsersBlock'
 let mapStateToProps = (state) => {
    return {
       users: state.users.users,
-      totalPages: state.users.totalPages,
       currentPage: state.users.currentPage,
       loading: state.users.loading
    }

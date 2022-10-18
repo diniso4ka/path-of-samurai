@@ -8,7 +8,7 @@ import PaginationContainer from "../Pagination/PaginationContainer";
 import {toggleLoading} from "../../../redux/slices/usersSlice";
 
 
-const UsersBlock = ({ users, follow, unfollow,getUsers,getTotalPages, getCurrentPage, totalPages,currentPage,loading,toggleLoading }) => {
+const UsersBlock = ({ users, follow, unfollow,getUsers,getTotalPages, getCurrentPage,currentPage,loading,toggleLoading }) => {
     const [load, setLoad]= React.useState(true)
     const fetchPages = async()=>{
         const res = await axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
