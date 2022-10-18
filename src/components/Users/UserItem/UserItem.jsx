@@ -1,11 +1,13 @@
 import React from 'react'
 import s from './UserItem.module.css'
+import {Link} from "react-router-dom";
+import * as routes from "../../../utils/consts";
 
 const UserItem = ({avatar, name, followed, id,  follow, unfollow}) => {
 	return (
 		<div className={`${s.user_wrapper} ${s.page_wrapper}`}>
 			<div className={s.main}>
-				<img src={avatar} className={s.avatar}/>
+			<Link to={`${routes.ROUTE_PROFILE}/${id}`}>	<img src={avatar} className={s.avatar}/></Link>
 				<div className={s.name}>{name}</div>
 			</div>
 			<div className={s.sub}>

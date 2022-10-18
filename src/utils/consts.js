@@ -1,4 +1,4 @@
-export const ROUTE_PROFILE = '/profile'
+export const ROUTE_PROFILE = '/profile/*'
 export const ROUTE_DIALOGS = '/dialogs'
 export const ROUTE_NEWS = '/news'
 export const ROUTE_MUSICS = '/musics'
