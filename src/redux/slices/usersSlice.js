@@ -5,6 +5,13 @@ const initialState = {
     currentPage: 1,
     totalPages: null,
     loading: true,
+    user: {
+        fullName: 'Denis',
+        photos: {
+            small: 'https://cdn.fishki.net/upload/post/2016/12/02/2153008/chihuahua-na-lugu.jpg',
+            large: 'https://cdn.fishki.net/upload/post/2016/12/02/2153008/chihuahua-na-lugu.jpg',
+        },
+    },
 }
 
 const usersSlice = createSlice({
