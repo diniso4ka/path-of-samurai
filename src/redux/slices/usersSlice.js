@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-   users: []
+   users: [],
+   currentPage:1,
+   totalPages: null,
 }
 
 const usersSlice = createSlice({
@@ -32,12 +34,17 @@ const usersSlice = createSlice({
          })
       }),
       getUsers: (state, action) => {
-         console.log(action.payload)
-         return { ...state, users: [...state.users, ...action.payload]  }
+         return { ...state, users: action.payload  }
+      },
+      getCurrentPage: (state, action) => {
+         state.currentPage = action.payload
+      },
+      getTotalPages: (state, action) => {
+        state.totalPages = action.payload
       },
 
    }
 })
 
-export const { follow, unfollow, getUsers } = usersSlice.actions
+export const { follow, unfollow, getUsers,getCurrentPage,getTotalPages } = usersSlice.actions
 export default usersSlice.reducer
