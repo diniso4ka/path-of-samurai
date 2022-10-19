@@ -13,10 +13,10 @@ import { saveAuth } from './redux/slices/userSlice'
 function App({ store }) {
     const dispatch = useDispatch()
     const checkIsAuth = async () => {
-        const res = await api.get(endpoints.me.isauth, {
-            withCredentials: true,
-        })
-        dispatch(saveAuth(res.data.data))
+        const res = await api.get(endpoints.me.isauth)
+        if (res.data.resultCode === 0) {
+            dispatch(saveAuth(res.data.data))
+        }
     }
     React.useEffect(() => {
         checkIsAuth()
