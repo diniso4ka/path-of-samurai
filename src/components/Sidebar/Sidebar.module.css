@@ -1,31 +1,29 @@
 .sidebar_wrapper {
-   width: var(--sidebar-width);
-   height: calc(100vh - var(--navbar-height));
-   background: var(--inverted-bg-color);
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--navbar-height));
+    background: var(--inverted-bg-color);
 }
-
 
 .sidebar_wrapper li {
-   padding: 10px;
-   font-size: var(--font-size-m);
-   cursor: pointer;
-   transition: var(--default-transition) ease-in-out;
-   text-decoration: none;
+    padding: 10px;
+    font-size: var(--font-size-m);
+    cursor: pointer;
+    transition: var(--default-transition) ease-in-out;
+    text-decoration: none;
 }
 
-
 .sidebar_wrapper li:hover {
-   color: var(--font-hover-color);
-   transform: translateY(-1px);
+    color: var(--font-hover-color);
+    transform: translateY(-1px);
 }
 
 .active {
-   color: var(--font-active-color);
-   background: var(--secondary-color);
+    color: var(--font-active-color);
+    background: var(--secondary-color);
 }
 
 li.active:hover {
-   transform: none;
-   transition: none;
-   color: var(--font-active-color);
+    transform: none;
+    transition: none;
+    color: var(--font-active-color);
 }

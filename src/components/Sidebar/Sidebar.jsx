@@ -1,15 +1,15 @@
 import React from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useLocation, useParams } from 'react-router-dom'
 import s from './Sidebar.module.css'
 
 import * as routes from '../../utils/consts'
 
 const Sidebar = () => {
-    const params = String(window.location.pathname)
+    const params = useLocation()
     const [active, setActive] = React.useState(0)
 
     const checkParams = params => {
-        switch (params) {
+        switch (params.pathname) {
             case '/profile':
                 setActive(0)
                 break

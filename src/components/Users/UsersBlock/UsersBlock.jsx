@@ -5,6 +5,8 @@ import axios from 'axios'
 import userPhoto from '../../../assets/images/user.png'
 import UserItem from '../UserItem/UserItem'
 import PaginationContainer from '../Pagination/PaginationContainer'
+import { api } from '../../../utils/axios/instance'
+import { endpoints } from '../../../utils/axios/endpoints'
 
 const UsersBlock = ({
     users,
@@ -18,15 +20,13 @@ const UsersBlock = ({
     toggleLoading,
 }) => {
     const fetchPages = async () => {
-        const res = await axios.get(
-            `https://social-network.samuraijs.com/api/1.0/users`
-        )
+        const res = await api.get(endpoints.users.list)
         getTotalPages(Math.ceil(res.data.totalCount / 5))
     }
     const fetchUsers = async () => {
         toggleLoading(true)
-        const res = await axios.get(
-            `https://social-network.samuraijs.com/api/1.0/users?page=${currentPage}&count=5`
+        const res = await api.get(
+            `${endpoints.users.list}?page=${currentPage}&count=5`
         )
         getUsers(res.data.items)
         toggleLoading(false)
