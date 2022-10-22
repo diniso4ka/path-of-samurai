@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getTotalPages, getCurrentPage } from '../../../redux/slices/usersSlice'
+import { getCurrentPage } from '../../../redux/slices/usersSlice'
 import Pagination from './Pagination'
 
 let mapStateToProps = state => {
@@ -14,9 +14,6 @@ let mapDispatchToProps = dispatch => {
     return {
         getCurrentPage: curPage => {
             dispatch(getCurrentPage(curPage))
-        },
-        getTotalPages: totalPages => {
-            dispatch(getTotalPages(totalPages))
         },
     }
 }

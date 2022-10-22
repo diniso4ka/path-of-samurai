@@ -4,9 +4,9 @@ import s from './Profile.module.css'
 import Info from '../../components/Profile/Info/Info'
 import PostBlock from '../../components/Profile/Post/PostBlock/PostBlock'
 import { useLocation, useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 
-import { checkIsAuth, fetchUser } from '../../utils/axios/requests'
+import { fetchUser } from '../../utils/axios/requests'
 
 const Profile = () => {
     const user = useSelector(state => state.users.user)

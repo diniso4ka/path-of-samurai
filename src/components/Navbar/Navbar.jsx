@@ -8,7 +8,7 @@ const Navbar = () => {
         <header className={s.navbar_wrapper}>
             <div></div>
             <div className={s.login}>
-                {user.id ? user.login : <button>login</button>}
+                {user ? user.login : <button>login</button>}
             </div>
         </header>
     )

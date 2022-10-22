@@ -6,39 +6,24 @@ import userPhoto from '../../../assets/images/user.png'
 import UserItem from '../UserItem/UserItem'
 import PaginationContainer from '../Pagination/PaginationContainer'
 import { fetchPages, fetchUsers } from '../../../utils/axios/requests'
+import { useDispatch } from 'react-redux'
+import {
+    fetchTotalPages,
+    fetchUsersList,
+} from '../../../redux/slices/usersSlice'
 
-const UsersBlock = ({
-    users,
-    follow,
-    unfollow,
-    getUsers,
-    getTotalPages,
-    getCurrentPage,
-    currentPage,
-    loading,
-    toggleLoading,
-}) => {
+const UsersBlock = ({ users, follow, unfollow, currentPage, status }) => {
+    const dispatch = useDispatch()
     React.useEffect(() => {
-        fetchPages().then(res => {
-            getTotalPages(res)
-        })
-
-        fetchUsers(currentPage).then(res => {
-            toggleLoading(true)
-            getUsers(res)
-            toggleLoading(false)
-        })
+        dispatch(fetchTotalPages())
+        dispatch(fetchUsersList(currentPage))
     }, [])
 
     React.useEffect(() => {
-        fetchUsers(currentPage).then(res => {
-            toggleLoading(true)
-            getUsers(res)
-            toggleLoading(false)
-        })
+        dispatch(fetchUsersList(currentPage))
     }, [currentPage])
 
-    if (loading) {
+    if (status === 'loading') {
         return <div>...loading</div>
     }
 
@@ -49,8 +34,6 @@ const UsersBlock = ({
                     ? users.map(user => (
                           <UserItem
                               key={user.id}
-                              unfollow={unfollow}
-                              follow={follow}
                               followed={user.followed}
                               avatar={
                                   user.photos.small

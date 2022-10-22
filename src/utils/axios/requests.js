@@ -1,6 +1,5 @@
 import { endpoints } from './endpoints'
 import { api } from './instance'
-import { saveAuth } from '../../redux/slices/userSlice'
 
 export const fetchUsers = async currentPage => {
     const res = await api.get(
@@ -22,4 +21,14 @@ export const checkIsAuth = async () => {
 export const fetchUser = async id => {
     const { data } = await api.get(endpoints.users.user(id))
     return data
+}
+
+export const fetchUnfollow = async id => {
+    const res = await api.delete(endpoints.users.follow(id))
+    return res.data.resultCode
+}
+
+export const fetchFollow = async id => {
+    const res = await api.post(endpoints.users.follow(id))
+    return res.data.resultCode
 }
