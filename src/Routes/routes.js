@@ -3,8 +3,16 @@ import Dialogs from '../pages/Dialogs/Dialogs'
 import Users from '../pages/Users/Users'
 
 import * as routes from '../utils/consts'
+import Login from '../pages/Login/Login'
 
 export const publicRoutes = [
+    {
+        path: routes.ROUTE_LOGIN,
+        Component: Login,
+    },
+]
+
+export const privateRoutes = [
     {
         path: routes.ROUTE_PROFILE,
         Component: Profile,

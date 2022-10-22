@@ -1,22 +1,19 @@
 import React from 'react'
 import s from './UsersBlock.module.css'
-import axios from 'axios'
 
 import userPhoto from '../../../assets/images/user.png'
 import UserItem from '../UserItem/UserItem'
 import PaginationContainer from '../Pagination/PaginationContainer'
-import { fetchPages, fetchUsers } from '../../../utils/axios/requests'
 import { useDispatch } from 'react-redux'
 import {
     fetchTotalPages,
     fetchUsersList,
 } from '../../../redux/slices/usersSlice'
 
-const UsersBlock = ({ users, follow, unfollow, currentPage, status }) => {
+const UsersBlock = ({ users, currentPage, status }) => {
     const dispatch = useDispatch()
     React.useEffect(() => {
         dispatch(fetchTotalPages())
-        dispatch(fetchUsersList(currentPage))
     }, [])
 
     React.useEffect(() => {
