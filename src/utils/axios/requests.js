@@ -19,8 +19,8 @@ export const checkIsAuth = async () => {
 }
 
 export const fetchUser = async id => {
-    const { data } = await api.get(endpoints.users.user(id))
-    return data
+    const res = await api.get(endpoints.users.user(id))
+    return res.data
 }
 
 export const fetchUnfollow = async id => {
@@ -31,4 +31,16 @@ export const fetchUnfollow = async id => {
 export const fetchFollow = async id => {
     const res = await api.post(endpoints.users.follow(id))
     return res.data.resultCode
+}
+
+export const fetchGetStatus = async id => {
+    const res = await api.get(endpoints.profile.getStatus(id))
+    return res.data
+}
+
+export const fetchSetStatus = async text => {
+    const res = await api.put(endpoints.profile.setStatus, {
+        status: text,
+    })
+    return res.data
 }

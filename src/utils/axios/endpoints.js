@@ -7,4 +7,8 @@ export const endpoints = {
     me: {
         isauth: '/auth/me',
     },
+    profile: {
+        getStatus: id => `/profile/status/${id}`,
+        setStatus: `/profile/status`,
+    },
 }

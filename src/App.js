@@ -6,8 +6,9 @@ import Navbar from './components/Navbar/Navbar'
 import Sidebar from './components/Sidebar/Sidebar'
 import AppRouter from './Routes/AppRouter'
 import { useDispatch } from 'react-redux'
-import { checkAuthData, saveAuth } from './redux/slices/userSlice'
+import { checkAuthData } from './redux/slices/userSlice'
 import { fetchUsersList } from './redux/slices/usersSlice'
+import { getStatus, setStatus } from './redux/slices/profileSlice'
 
 function App({ store }) {
     const dispatch = useDispatch()
