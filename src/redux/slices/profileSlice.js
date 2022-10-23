@@ -1,6 +1,4 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { api } from '../../utils/axios/instance'
-import { endpoints } from '../../utils/axios/endpoints'
 import { fetchGetStatus, fetchSetStatus } from '../../utils/axios/requests'
 
 export const getStatus = createAsyncThunk('profile/getStatus', async id => {
@@ -40,8 +38,11 @@ const initialState = {
         },
     ],
     newPostText: '',
-    profileStatus: 'set new status',
     status: 'loading',
+    profileStatus: {
+        status: 'loading',
+        statusText: 'Add new post',
+    },
 }
 
 const profileSlice = createSlice({
@@ -64,27 +65,27 @@ const profileSlice = createSlice({
     },
     extraReducers: builder => {
         builder.addCase(getStatus.pending, (state, action) => {
-            state.profileStatus = ''
-            state.status = 'loading'
+            state.profileStatus.statusText = ''
+            state.profileStatus.status = 'loading'
         }),
             builder.addCase(getStatus.fulfilled, (state, action) => {
-                state.profileStatus = action.payload
-                state.status = 'success'
-                console.log(state.profileStatus)
+                state.profileStatus.statusText = action.payload
+                state.profileStatus.status = 'success'
+                console.log(state.profileStatus.statusText)
             }),
             builder.addCase(getStatus.rejected, (state, action) => {
-                state.profileStatus = ''
-                state.status = 'error'
+                state.profileStatus.statusText = ''
+                state.profileStatus.status = 'error'
             }),
             builder.addCase(setStatus.pending, (state, action) => {
-                state.status = 'loading'
+                state.profileStatus.status = 'loading'
             }),
             builder.addCase(setStatus.fulfilled, (state, action) => {
-                state.status = 'success'
+                state.profileStatus.status = 'success'
                 console.log(action.payload)
             }),
             builder.addCase(setStatus.rejected, (state, action) => {
-                state.status = 'error'
+                state.profileStatus.status = 'error'
             })
     },
 })
