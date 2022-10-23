@@ -35,7 +35,7 @@ const Profile = () => {
     return (
         <main className={`${s.profile_wrapper} ${s.page_wrapper}`}>
             <Info data={data} />
-            <StatusBlock />
+            <StatusBlock id={id ? id : 26364} />
             <PostBlock />
         </main>
     )

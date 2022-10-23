@@ -8,7 +8,6 @@ import AppRouter from './Routes/AppRouter'
 import { useDispatch } from 'react-redux'
 import { checkAuthData } from './redux/slices/userSlice'
 import { fetchUsersList } from './redux/slices/usersSlice'
-import { getStatus, setStatus } from './redux/slices/profileSlice'
 
 function App({ store }) {
     const dispatch = useDispatch()

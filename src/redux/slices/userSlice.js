@@ -31,7 +31,6 @@ const userSlice = createSlice({
         }),
             builder.addCase(checkAuthData.fulfilled, (state, action) => {
                 state.user = { ...action.payload }
-                console.log(state.user)
                 state.status = 'success'
             }),
             builder.addCase(checkAuthData.rejected, (state, action) => {

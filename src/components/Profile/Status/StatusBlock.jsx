@@ -3,36 +3,43 @@ import s from './StatusBlock.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getStatus, setStatus } from '../../../redux/slices/profileSlice'
 
-const StatusBlock = () => {
-    const profile = useSelector(state => state.profile)
+const StatusBlock = ({ id }) => {
+    const { status, statusText } = useSelector(
+        state => state.profile.profileStatus
+    )
     const dispatch = useDispatch()
     const [editing, setEditing] = React.useState(false)
     const [value, setValue] = React.useState('')
 
     const checkStatus = () => {
-        setValue(profile.profileStatus.statusText)
+        setValue(statusText)
     }
 
     const onClickSend = async () => {
         setEditing(!editing)
-        await dispatch(setStatus(value))
-        await dispatch(getStatus(26364))
+        if (statusText !== value) {
+            await dispatch(setStatus(value))
+            await dispatch(getStatus(id))
+        }
     }
 
     React.useEffect(() => {
-        dispatch(getStatus(26364))
+        dispatch(getStatus(id))
         checkStatus()
     }, [])
 
     React.useEffect(() => {
         checkStatus()
-    }, [profile.profileStatus.statusText])
+    }, [statusText])
+
+    if (status === 'loading') {
+        return <div>...loading</div>
+    }
 
     return (
         <section className={s.wrapper}>
-            {editing ? (
+            {editing && id === 26364 ? (
                 <>
-                    {' '}
                     <input
                         onChange={e => setValue(e.target.value)}
                         value={value}
