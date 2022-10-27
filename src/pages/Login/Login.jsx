@@ -1,89 +1,84 @@
 import React from 'react'
 import s from './Login.module.css'
 import { useForm } from 'react-hook-form'
-import Input from '../../components/Input/Input'
+import { useDispatch } from 'react-redux'
+import { checkAuthData, loginAuth } from '../../redux/slices/userSlice'
 
 const Login = () => {
+    const dispatch = useDispatch()
     const {
         register,
         handleSubmit,
-        formState: { errors, isValid },
+        formState: { errors },
     } = useForm({
         defaultValues: {
-            login: '',
+            email: '',
             password: '',
         },
         mode: 'onSubmit',
     })
 
-    const onSubmit = values => {
-        console.log({ ...values, user: 'denis' })
-        console.log({ ...register() })
+    const onSubmit = async values => {
+        await dispatch(loginAuth({ ...values }))
+        await dispatch(checkAuthData())
     }
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <h1>Login</h1>
-            <div>
-                <div>
-                    <input
-                        error={Boolean(errors.login?.message)}
-                        helperText={errors.login?.message}
-                        placeholder={'login'}
-                        type={'text'}
-                        {...register('login', {
-                            required: 'Укажите логин',
-                            minLength: {
-                                value: 4,
-                                message:
-                                    'Логин должен содержать от 4 до 14 символов.',
-                            },
-                            maxLength: {
-                                value: 14,
-                                message:
-                                    'Логин должен содержать от 4 до 14 символов.',
-                            },
-                        })}
-                    />
-                    <label>Login</label>
+        <div className={s.wrapper}>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <h1>Login</h1>
+                <div className={s.login}>
+                    <label className={`${s.placeHolder} ${s.activeHolder}`}>
+                        Login
+                    </label>
+                    <div>
+                        <input
+                            className={`${s.input} ${
+                                errors.email?.message && s.inputError
+                            }`}
+                            type={'text'}
+                            {...register('email', {
+                                required: 'Укажите email',
+                            })}
+                        />
+                    </div>
+                    <p>{errors.email?.message ? errors.email?.message : ''}</p>
                 </div>
-                <p>{errors.login?.message ? errors.login?.message : ''}</p>
-            </div>
-            <div>
-                <div>
-                    <input
-                        placeholder={'password'}
-                        type={'text'}
-                        error={Boolean(errors.password?.message)}
-                        helperText={errors.password?.message}
-                        {...register('password', {
-                            required: 'Укажите пароль',
-                            minLength: {
-                                value: 4,
-                                message:
-                                    'Пароль должен содержать от 4 до 14 символов.',
-                            },
-                            maxLength: {
-                                value: 14,
-                                message:
-                                    'Пароль должен содержать от 4 до 14 символов.',
-                            },
-                        })}
-                    />
-                    <label>Password</label>
-                    <p>
-                        {errors.password?.message
-                            ? errors.password?.message
-                            : ''}
-                    </p>
+                <div className={s.password}>
+                    <label className={`${s.placeHolder} ${s.activeHolder}`}>
+                        Password
+                    </label>
+                    <div>
+                        <input
+                            className={`${s.input} ${
+                                errors.password?.message && s.inputError
+                            }`}
+                            type={'text'}
+                            {...register('password', {
+                                required: 'Укажите пароль',
+                                minLength: {
+                                    value: 4,
+                                    message:
+                                        'Пароль должен содержать от 4 до 14 символов.',
+                                },
+                                maxLength: {
+                                    value: 14,
+                                    message:
+                                        'Пароль должен содержать от 4 до 14 символов.',
+                                },
+                            })}
+                        />
+
+                        <p>{errors.password?.message}</p>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <input type={'checkbox'} {...register('remember', {})} />
-                <label>remember</label>
-            </div>
-            <button type='submit'>submit</button>
-        </form>
+                <div>
+                    <input type={'checkbox'} {...register('rememberMe', {})} />
+                    <label>remember</label>
+                </div>
+                <button type='submit'>submit</button>
+            </form>
+        </div>
     )
 }
 

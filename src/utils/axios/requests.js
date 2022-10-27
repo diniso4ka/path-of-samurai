@@ -44,3 +44,17 @@ export const fetchSetStatus = async text => {
     })
     return res.data
 }
+
+export const fetchLogin = async user => {
+    const res = await api.post(endpoints.me.login, {
+        email: user.email,
+        password: user.password,
+        rememberMe: user.rememberMe,
+    })
+    return res
+}
+
+export const fetchLogout = async user => {
+    const res = await api.delete(endpoints.me.login)
+    return res
+}

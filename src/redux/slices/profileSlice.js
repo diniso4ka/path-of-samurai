@@ -71,7 +71,6 @@ const profileSlice = createSlice({
             builder.addCase(getStatus.fulfilled, (state, action) => {
                 state.profileStatus.statusText = action.payload
                 state.profileStatus.status = 'success'
-                console.log(state.profileStatus.statusText)
             }),
             builder.addCase(getStatus.rejected, (state, action) => {
                 state.profileStatus.statusText = ''
@@ -82,7 +81,6 @@ const profileSlice = createSlice({
             }),
             builder.addCase(setStatus.fulfilled, (state, action) => {
                 state.profileStatus.status = 'success'
-                console.log(action.payload)
             }),
             builder.addCase(setStatus.rejected, (state, action) => {
                 state.profileStatus.status = 'error'

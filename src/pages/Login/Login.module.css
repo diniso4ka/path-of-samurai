@@ -1,0 +1,44 @@
+.wrapper {
+    width: 300px;
+    margin: 0 auto;
+    margin-top: 200px;
+}
+.input {
+    padding: 10px;
+    background-color: transparent;
+    border: 1px solid rgba(82, 74, 74, 0.2);
+    border-radius: 8px;
+}
+
+.input:focus {
+    border: 1px solid rgba(82, 74, 74, 0.2);
+    outline: none;
+}
+
+.inputError {
+    border: 1px solid rgb(194, 0, 0);
+}
+.inputError:focus {
+    border: 1px solid rgb(194, 0, 0);
+}
+
+.login {
+    height: 90px;
+}
+.password {
+    height: 90px;
+}
+
+.placeHolder {
+    color: var(--primary-color);
+    background-color: var(--bg-color);
+    display: block;
+    width: fit-content;
+    margin-left: 12px;
+    transform: translateY(29px);
+    transition: 0.2s ease-in-out;
+}
+
+.activeHolder {
+    transform: translateY(8px) scale(1, 1);
+}

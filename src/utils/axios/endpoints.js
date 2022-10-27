@@ -6,6 +6,7 @@ export const endpoints = {
     },
     me: {
         isauth: '/auth/me',
+        login: '/auth/login',
     },
     profile: {
         getStatus: id => `/profile/status/${id}`,
