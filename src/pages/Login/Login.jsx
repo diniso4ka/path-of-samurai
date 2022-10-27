@@ -1,12 +1,13 @@
 import React from 'react'
 import s from './Login.module.css'
 import { useForm } from 'react-hook-form'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { checkAuthData, loginAuth } from '../../redux/slices/userSlice'
 import { Button } from '../../components/Button/Button'
 
 const Login = () => {
     const dispatch = useDispatch()
+    const asyncValidError = useSelector(state => state.user.validError)
     const {
         register,
         handleSubmit,
@@ -70,10 +71,10 @@ const Login = () => {
                             })}
                         />
 
-                        <p>{errors.password?.message}</p>
+                        <p>{errors.password?.message || asyncValidError}</p>
                     </div>
                 </div>
-                <div>
+                <div className={s.remember}>
                     <input type={'checkbox'} {...register('rememberMe', {})} />
                     <label>remember</label>
                 </div>

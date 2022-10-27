@@ -23,6 +23,7 @@ export const loginAuth = createAsyncThunk(
     'user/loginAuthStatus',
     async user => {
         const res = await fetchLogin(user)
+        console.log(res)
         return res.data
     }
 )
@@ -37,6 +38,7 @@ export const logoutAuth = createAsyncThunk(
 const initialState = {
     user: null,
     status: 'loading',
+    validError: '',
 }
 
 const userSlice = createSlice({
@@ -62,6 +64,11 @@ const userSlice = createSlice({
                 state.status = 'loading'
             }),
             builder.addCase(loginAuth.fulfilled, (state, action) => {
+                if (action.payload.resultCode === 1) {
+                    state.validError = action.payload.messages
+                } else {
+                    state.validError = ''
+                }
                 state.status = 'success'
             }),
             builder.addCase(loginAuth.rejected, (state, action) => {
