@@ -54,7 +54,7 @@ export const fetchLogin = async user => {
     return res
 }
 
-export const fetchLogout = async user => {
+export const fetchLogout = async () => {
     const res = await api.delete(endpoints.me.login)
     return res
 }

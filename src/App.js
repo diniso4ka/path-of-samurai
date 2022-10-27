@@ -11,12 +11,16 @@ import { fetchUsersList } from './redux/slices/usersSlice'
 
 function App() {
     const dispatch = useDispatch()
-    const { user } = useSelector(state => state.user)
+    const { user, status } = useSelector(state => state.user)
 
     React.useEffect(() => {
         dispatch(checkAuthData())
         dispatch(fetchUsersList())
     }, [])
+
+    if (status === 'loading') {
+        return <div>...loading</div>
+    }
 
     return (
         <BrowserRouter>

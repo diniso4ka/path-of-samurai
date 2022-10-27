@@ -1,12 +1,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { checkIsAuth, fetchLogin } from '../../utils/axios/requests'
+import {
+    checkIsAuth,
+    fetchLogin,
+    fetchLogout,
+} from '../../utils/axios/requests'
 
 export const checkAuthData = createAsyncThunk(
     'user/setAuthDataStatus',
     async () => {
         const data = await checkIsAuth().then(res => {
             if (res.resultCode === 0) {
-                console.log(res)
                 return res.data
             } else {
                 return null
@@ -20,7 +23,13 @@ export const loginAuth = createAsyncThunk(
     'user/loginAuthStatus',
     async user => {
         const res = await fetchLogin(user)
-        console.log(user, res)
+        return res.data
+    }
+)
+export const logoutAuth = createAsyncThunk(
+    'user/logoutAuthStatus',
+    async () => {
+        const res = await fetchLogout()
         return res.data
     }
 )
@@ -40,7 +49,6 @@ const userSlice = createSlice({
             state.status = 'loading'
         }),
             builder.addCase(checkAuthData.fulfilled, (state, action) => {
-                console.log(action.payload)
                 state.user =
                     action.payload === null ? null : { ...action.payload }
                 state.status = 'success'
@@ -54,10 +62,20 @@ const userSlice = createSlice({
                 state.status = 'loading'
             }),
             builder.addCase(loginAuth.fulfilled, (state, action) => {
-                console.log(action.payload)
-                state.status = 'succes'
+                state.status = 'success'
             }),
             builder.addCase(loginAuth.rejected, (state, action) => {
+                state.user = null
+                state.status = 'error'
+            }),
+            builder.addCase(logoutAuth.pending, (state, action) => {
+                state.user = null
+                state.status = 'loading'
+            }),
+            builder.addCase(logoutAuth.fulfilled, (state, action) => {
+                state.status = 'success'
+            }),
+            builder.addCase(logoutAuth.rejected, (state, action) => {
                 state.user = null
                 state.status = 'error'
             })
