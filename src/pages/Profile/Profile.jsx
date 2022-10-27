@@ -11,7 +11,7 @@ import Info from '../../components/Profile/Info/Info'
 import PostBlock from '../../components/Profile/Post/PostBlock/PostBlock'
 
 const Profile = () => {
-    const user = useSelector(state => state.users.user)
+    const user = useSelector(state => state.user.user)
     const [data, setData] = React.useState(null)
     const { id } = useParams()
     const location = useLocation()
@@ -22,9 +22,9 @@ const Profile = () => {
                 setData(prev => ({ ...res }))
             })
         } else {
-            setData(prev => ({
-                ...user,
-            }))
+            fetchUser(user.id).then(res => {
+                setData(prev => ({ ...res }))
+            })
         }
     }, [location])
 
@@ -35,7 +35,7 @@ const Profile = () => {
     return (
         <main className={`${s.profile_wrapper} ${s.page_wrapper}`}>
             <Info data={data} />
-            <StatusBlock id={id ? id : 26364} />
+            <StatusBlock id={id ? id : user.id} />
             <PostBlock />
         </main>
     )

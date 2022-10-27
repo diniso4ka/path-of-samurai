@@ -3,6 +3,7 @@ import s from './Login.module.css'
 import { useForm } from 'react-hook-form'
 import { useDispatch } from 'react-redux'
 import { checkAuthData, loginAuth } from '../../redux/slices/userSlice'
+import { Button } from '../../components/Button/Button'
 
 const Login = () => {
     const dispatch = useDispatch()
@@ -76,7 +77,7 @@ const Login = () => {
                     <input type={'checkbox'} {...register('rememberMe', {})} />
                     <label>remember</label>
                 </div>
-                <button type='submit'>submit</button>
+                <Button type={'submit'}>submit</Button>
             </form>
         </div>
     )

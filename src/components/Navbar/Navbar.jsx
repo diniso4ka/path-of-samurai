@@ -2,6 +2,7 @@ import s from './Navbar.module.css'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { logoutAuth } from '../../redux/slices/userSlice'
+import { Button } from '../Button/Button'
 
 const Navbar = () => {
     const { user } = useSelector(state => state.user)
@@ -15,12 +16,10 @@ const Navbar = () => {
             <div className={s.login}>
                 {user ? (
                     <>
-                        <button onClick={onClickLogout}>logout</button>
+                        <Button onHandleClick={onClickLogout}>logout</Button>
                         {user.login}
                     </>
-                ) : (
-                    <button>login</button>
-                )}
+                ) : null}
             </div>
         </header>
     )
