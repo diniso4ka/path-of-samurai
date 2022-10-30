@@ -17,7 +17,7 @@ const Navbar = () => {
                 {user ? (
                     <>
                         <Button onHandleClick={onClickLogout}>logout</Button>
-                        {user.login}
+                        <span className={s.username}>{user.login}</span>
                     </>
                 ) : null}
             </div>

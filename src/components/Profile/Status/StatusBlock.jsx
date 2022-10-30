@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getStatus, setStatus } from '../../../redux/slices/profileSlice'
 
 const StatusBlock = ({ id }) => {
+    const user = useSelector(state => state.user.user)
     const { status, statusText } = useSelector(
         state => state.profile.profileStatus
     )
@@ -38,7 +39,7 @@ const StatusBlock = ({ id }) => {
 
     return (
         <section className={s.wrapper}>
-            {editing && id === 26364 ? (
+            {editing && id === user.id ? (
                 <>
                     <input
                         onChange={e => setValue(e.target.value)}

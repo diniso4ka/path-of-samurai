@@ -11,7 +11,7 @@ export const fetchUsersList = createAsyncThunk(
 
 export const fetchTotalPages = createAsyncThunk(
     'users/fetchTotalPagesStatus',
-    async currentPage => {
+    async () => {
         const data = await fetchPages().then(res => res)
         return data
     }
@@ -22,13 +22,6 @@ const initialState = {
     currentPage: 1,
     totalPages: null,
     status: 'loading',
-    user: {
-        fullName: 'Denis',
-        photos: {
-            small: 'https://cdn.fishki.net/upload/post/2016/12/02/2153008/chihuahua-na-lugu.jpg',
-            large: 'https://cdn.fishki.net/upload/post/2016/12/02/2153008/chihuahua-na-lugu.jpg',
-        },
-    },
 }
 
 const usersSlice = createSlice({

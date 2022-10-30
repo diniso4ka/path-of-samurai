@@ -2,6 +2,7 @@ import s from './Info.module.css'
 import React from 'react'
 import userPhoto from '../../../assets/images/user.png'
 const Info = ({ data }) => {
+    console.log(data)
     return (
         <section className={s.info_wrapper}>
             <img
@@ -10,10 +11,23 @@ const Info = ({ data }) => {
             ></img>
             <div className={s.text_wrapper}>
                 <p className={s.text__name}>{data.fullName}</p>
-                <p className={s.text__city}>Erevan</p>
-                <p className={s.text__education}>Gerevan</p>
-                <p className={s.text__birthday}>02.11.2001</p>
-                <p className={s.text__website}>...</p>
+                <ul className={s.contacts}>
+                    <li className={s.contactsItem}>
+                        Facebook: {data.contacts.facebook}
+                    </li>
+                    <li className={s.contactsItem}>
+                        Github: {data.contacts.github}
+                    </li>
+                    <li className={s.contactsItem}>
+                        Instagram: {data.contacts.instagram}
+                    </li>
+                    <li className={s.contactsItem}>Vk: {data.contacts.vk}</li>
+                </ul>
+                <p className={s.text__birthday}>
+                    {data.lookingForAJob
+                        ? `Looking for a job: ${data.lookingForAJobDescription}`
+                        : ''}
+                </p>
             </div>
         </section>
     )

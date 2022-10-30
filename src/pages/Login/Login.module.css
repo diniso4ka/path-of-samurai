@@ -3,6 +3,7 @@
     margin: 0 auto;
     margin-top: 200px;
 }
+
 .input {
     padding: 10px;
     margin-bottom: 5px;
@@ -24,11 +25,15 @@
 }
 
 .login {
+    margin: 15px 0 0 0;
     height: 90px;
+    position: relative;
 }
+
 .password {
     height: 90px;
     margin-bottom: 10px;
+    position: relative;
 }
 
 .remember {
@@ -44,10 +49,13 @@
     display: block;
     width: fit-content;
     margin-left: 12px;
-    transform: translateY(29px);
     transition: 0.2s ease-in-out;
+    position: absolute;
+    top: 10px;
 }
 
 .activeHolder {
-    transform: translateY(8px) scale(1, 1);
+    font-size: 12px;
+    top: -7px;
+    background-color: var(--bg-color);
 }

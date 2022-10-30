@@ -8,6 +8,7 @@ import AppRouter from './Routes/AppRouter'
 import { useDispatch, useSelector } from 'react-redux'
 import { checkAuthData } from './redux/slices/userSlice'
 import { fetchUsersList } from './redux/slices/usersSlice'
+import { Preloader } from './components/Preloader/Preloader'
 
 function App() {
     const dispatch = useDispatch()
@@ -19,7 +20,12 @@ function App() {
     }, [])
 
     if (status === 'loading') {
-        return <div>...loading</div>
+        return (
+            <>
+                <Navbar />
+                <Preloader />
+            </>
+        )
     }
 
     return (
@@ -32,7 +38,9 @@ function App() {
                         <AppRouter />
                     </section>
                 ) : (
-                    <AppRouter />
+                    <>
+                        <AppRouter />
+                    </>
                 )}
             </div>
         </BrowserRouter>

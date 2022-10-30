@@ -11,12 +11,13 @@
 .avatar {
     width: var(--avatar-width);
     height: var(--avatar-height);
-    /*background-image: url('https://i.pinimg.com/originals/76/2c/dc/762cdcc21c11048ae8725635d22827ba.jpg');*/
-    /*background-position: center;*/
-    /*background-repeat: no-repeat;*/
-    /*background-size: cover;*/
 }
 
 .text__name {
     font-size: var(--font-size-l);
+}
+
+.contactsItem {
+    text-decoration: none;
+    list-style-type: none;
 }
