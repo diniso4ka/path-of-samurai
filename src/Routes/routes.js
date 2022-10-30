@@ -1,32 +1,32 @@
-import Profile from '../pages/Profile/Profile'
-import Dialogs from '../pages/Dialogs/Dialogs'
-import Users from '../pages/Users/Users'
+import { LoginAsync } from '../pages/Login/LoginAsync'
+import { ProfileAsync } from '../pages/Profile/ProfileAsync'
+import { UserAsync } from '../pages/Users/UserAsync'
+import { DialogsAsync } from '../pages/Dialogs/DialogsAsync'
 
 import * as routes from '../utils/consts'
-import Login from '../pages/Login/Login'
 
 export const publicRoutes = [
     {
         path: routes.ROUTE_LOGIN,
-        Component: Login,
+        Component: LoginAsync,
     },
 ]
 
 export const privateRoutes = [
     {
         path: routes.ROUTE_PROFILE,
-        Component: Profile,
+        Component: ProfileAsync,
     },
     {
         path: routes.ROUTE_DIALOGS,
-        Component: Dialogs,
+        Component: DialogsAsync,
     },
     {
         path: routes.ROUTE_USERS,
-        Component: Users,
+        Component: UserAsync,
     },
     {
         path: routes.ROUTE_USER,
-        Component: Profile,
+        Component: ProfileAsync,
     },
 ]

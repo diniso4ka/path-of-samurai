@@ -35,12 +35,14 @@ function App() {
                 {user ? (
                     <section className='content-wrapper'>
                         <Sidebar />
-                        <AppRouter />
+                        <React.Suspense fallback={<div>...loading</div>}>
+                            <AppRouter />
+                        </React.Suspense>
                     </section>
                 ) : (
-                    <>
+                    <React.Suspense fallback={<div>...loading</div>}>
                         <AppRouter />
-                    </>
+                    </React.Suspense>
                 )}
             </div>
         </BrowserRouter>

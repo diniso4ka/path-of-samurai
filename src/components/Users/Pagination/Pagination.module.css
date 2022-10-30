@@ -1,18 +1,21 @@
-
-.pagination{
-   display: flex;
-   justify-content: space-between;
-   max-width: 200px;
-   margin: 0 auto;
-   text-align: center;
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.pagination_item{
-   margin: 0 10px ;
-   font-size: var(--font-size-m);
-   cursor: pointer;
+.pagination_item {
+    font-size: var(--font-size-m);
+    margin-left: 15px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(119, 105, 105, 0.2);
 }
 
-.active{
-   font-weight: 700;
+.active {
+    font-weight: 700;
+    border: 1px solid rgba(119, 105, 105, 1);
 }
