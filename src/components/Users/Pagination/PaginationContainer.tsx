@@ -2,8 +2,9 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getCurrentPage } from '../../../redux/slices/usersSlice'
 import Pagination from './Pagination'
+import { RootState } from '../../../redux/store'
 
-let mapStateToProps = state => {
+let mapStateToProps = (state: RootState) => {
     return {
         totalPages: state.users.totalPages,
         currentPage: state.users.currentPage,

@@ -4,7 +4,7 @@ import { getStatus, setStatus } from '../../../redux/slices/profileSlice'
 import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 
 interface IStatusBlockProps {
-    id: number
+    id: number | string
 }
 
 const StatusBlock: React.FC<IStatusBlockProps> = ({ id }) => {

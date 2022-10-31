@@ -1,7 +1,17 @@
 import React from 'react'
 import s from './Pagination.module.css'
 
-const Pagination = ({ getCurrentPage, totalPages, currentPage }) => {
+interface IPaginationProps {
+    getCurrentPage: (num: number) => void
+    totalPages: number
+    currentPage: number
+}
+
+const Pagination: React.FC<IPaginationProps> = ({
+    getCurrentPage,
+    totalPages,
+    currentPage,
+}) => {
     const onTogglePage = num => {
         getCurrentPage(num)
     }
@@ -12,7 +22,9 @@ const Pagination = ({ getCurrentPage, totalPages, currentPage }) => {
                 <div className={s.pagination}>
                     {+currentPage === 2 && (
                         <div
-                            onClick={e => onTogglePage(e.target.innerHTML)}
+                            onClick={(e: any) =>
+                                onTogglePage(e.target.innerHTML)
+                            }
                             className={s.pagination_item}
                         >
                             {1}
@@ -21,7 +33,9 @@ const Pagination = ({ getCurrentPage, totalPages, currentPage }) => {
 
                     {+currentPage === 3 && (
                         <div
-                            onClick={e => onTogglePage(e.target.innerHTML)}
+                            onClick={(e: any) =>
+                                onTogglePage(e.target.innerHTML)
+                            }
                             className={s.pagination_item}
                         >
                             {1}
@@ -29,7 +43,9 @@ const Pagination = ({ getCurrentPage, totalPages, currentPage }) => {
                     )}
                     {+currentPage === 3 && (
                         <div
-                            onClick={e => onTogglePage(e.target.innerHTML)}
+                            onClick={(e: any) =>
+                                onTogglePage(e.target.innerHTML)
+                            }
                             className={s.pagination_item}
                         >
                             {2}
@@ -38,7 +54,9 @@ const Pagination = ({ getCurrentPage, totalPages, currentPage }) => {
 
                     {+currentPage > 3 && (
                         <div
-                            onClick={e => onTogglePage(e.target.innerHTML)}
+                            onClick={(e: any) =>
+                                onTogglePage(e.target.innerHTML)
+                            }
                             className={s.pagination_item}
                         >
                             {currentPage - 3}
@@ -46,7 +64,9 @@ const Pagination = ({ getCurrentPage, totalPages, currentPage }) => {
                     )}
                     {+currentPage > 3 && (
                         <div
-                            onClick={e => onTogglePage(e.target.innerHTML)}
+                            onClick={(e: any) =>
+                                onTogglePage(e.target.innerHTML)
+                            }
                             className={s.pagination_item}
                         >
                             {currentPage - 2}
@@ -54,7 +74,9 @@ const Pagination = ({ getCurrentPage, totalPages, currentPage }) => {
                     )}
                     {+currentPage > 3 && (
                         <div
-                            onClick={e => onTogglePage(e.target.innerHTML)}
+                            onClick={(e: any) =>
+                                onTogglePage(e.target.innerHTML)
+                            }
                             className={s.pagination_item}
                         >
                             {currentPage - 1}
@@ -62,26 +84,26 @@ const Pagination = ({ getCurrentPage, totalPages, currentPage }) => {
                     )}
 
                     <div
-                        onClick={e => onTogglePage(e.target.innerHTML)}
+                        onClick={(e: any) => onTogglePage(e.target.innerHTML)}
                         className={`${s.pagination_item} ${s.active}`}
                     >
                         {currentPage}
                     </div>
 
                     <div
-                        onClick={e => onTogglePage(e.target.innerHTML)}
+                        onClick={(e: any) => onTogglePage(e.target.innerHTML)}
                         className={s.pagination_item}
                     >
                         {+currentPage + 1}
                     </div>
                     <div
-                        onClick={e => onTogglePage(e.target.innerHTML)}
+                        onClick={(e: any) => onTogglePage(e.target.innerHTML)}
                         className={s.pagination_item}
                     >
                         {+currentPage + 2}
                     </div>
                     <div
-                        onClick={e => onTogglePage(e.target.innerHTML)}
+                        onClick={(e: any) => onTogglePage(e.target.innerHTML)}
                         className={s.pagination_item}
                     >
                         {+currentPage + 3}
@@ -89,7 +111,9 @@ const Pagination = ({ getCurrentPage, totalPages, currentPage }) => {
 
                     {+currentPage <= 3 && (
                         <div
-                            onClick={e => onTogglePage(e.target.innerHTML)}
+                            onClick={(e: any) =>
+                                onTogglePage(e.target.innerHTML)
+                            }
                             className={s.pagination_item}
                         >
                             {+currentPage + 4}
@@ -97,7 +121,9 @@ const Pagination = ({ getCurrentPage, totalPages, currentPage }) => {
                     )}
                     {+currentPage <= 2 && (
                         <div
-                            onClick={e => onTogglePage(e.target.innerHTML)}
+                            onClick={(e: any) =>
+                                onTogglePage(e.target.innerHTML)
+                            }
                             className={s.pagination_item}
                         >
                             {+currentPage + 5}
@@ -105,7 +131,9 @@ const Pagination = ({ getCurrentPage, totalPages, currentPage }) => {
                     )}
                     {+currentPage <= 1 && (
                         <div
-                            onClick={e => onTogglePage(e.target.innerHTML)}
+                            onClick={(e: any) =>
+                                onTogglePage(e.target.innerHTML)
+                            }
                             className={s.pagination_item}
                         >
                             {+currentPage + 6}

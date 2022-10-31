@@ -4,9 +4,9 @@ import s from './Sidebar.module.css'
 
 import * as routes from '../../utils/consts'
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
     const params = useLocation()
-    const [active, setActive] = React.useState(0)
+    const [active, setActive] = React.useState<number>(0)
 
     const checkParams = params => {
         switch (params.pathname) {

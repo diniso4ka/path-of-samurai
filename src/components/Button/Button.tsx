@@ -9,7 +9,7 @@ export enum ButtonType {
 
 interface IButtonProps {
     type: ButtonType
-    onHandleClick: () => void
+    onHandleClick?: () => void
     children: React.ReactNode
 }
 

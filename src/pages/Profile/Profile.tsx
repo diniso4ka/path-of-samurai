@@ -2,7 +2,6 @@ import React from 'react'
 import s from './Profile.module.css'
 
 import { useLocation, useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
 
 import { fetchUser } from '../../utils/axios/requests'
 
@@ -10,11 +9,13 @@ import StatusBlock from '../../components/Profile/Status/StatusBlock'
 import Info from '../../components/Profile/Info/Info'
 import PostBlock from '../../components/Profile/Post/PostBlock/PostBlock'
 import { setPhoto } from '../../redux/slices/profileSlice'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
+import { IUser } from '../../utils/axios/types'
 
-const Profile = () => {
-    const user = useSelector(state => state.user.user)
-    const dispatch = useDispatch()
-    const [data, setData] = React.useState(null)
+const Profile: React.FC = () => {
+    const user = useAppSelector(state => state.user.user)
+    const dispatch = useAppDispatch()
+    const [data, setData] = React.useState<IUser>(null)
     const { id } = useParams()
     const location = useLocation()
     const onUploadFile = async e => {

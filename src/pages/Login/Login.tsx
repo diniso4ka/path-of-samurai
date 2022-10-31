@@ -1,17 +1,17 @@
 import React from 'react'
 import s from './Login.module.css'
 import { useForm } from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
 import { checkAuthData, loginAuth } from '../../redux/slices/userSlice'
-import { Button } from '../../components/Button/Button'
+import { Button, ButtonType } from '../../components/Button/Button'
+import { useAppDispatch, useAppSelector } from '../../redux/hooks'
 
-const Login = () => {
-    const [valueLogin, setValueLogin] = React.useState('')
-    const [loginFocus, setLoginFocus] = React.useState(false)
-    const [valueRegister, setValueRegister] = React.useState('')
-    const [registerFocus, setRegisterFocus] = React.useState(false)
-    const dispatch = useDispatch()
-    const asyncValidError = useSelector(state => state.user.validError)
+const Login: React.FC = () => {
+    const [valueLogin, setValueLogin] = React.useState<string>('')
+    const [loginFocus, setLoginFocus] = React.useState<boolean>(false)
+    const [valueRegister, setValueRegister] = React.useState<string>('')
+    const [registerFocus, setRegisterFocus] = React.useState<boolean>(false)
+    const dispatch = useAppDispatch()
+    const asyncValidError = useAppSelector(state => state.user.validError)
     const {
         register,
         handleSubmit,
@@ -20,6 +20,7 @@ const Login = () => {
         defaultValues: {
             email: '',
             password: '',
+            rememberMe: false,
         },
         mode: 'onSubmit',
     })
@@ -97,7 +98,7 @@ const Login = () => {
                     <input type={'checkbox'} {...register('rememberMe', {})} />
                     <label>remember</label>
                 </div>
-                <Button type={'submit'}>submit</Button>
+                <Button type={ButtonType.SUBMIT}>submit</Button>
             </form>
         </div>
     )
