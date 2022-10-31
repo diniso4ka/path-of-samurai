@@ -1,14 +1,18 @@
 import React from 'react'
 import s from './StatusBlock.module.css'
-import { useDispatch, useSelector } from 'react-redux'
 import { getStatus, setStatus } from '../../../redux/slices/profileSlice'
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks'
 
-const StatusBlock = ({ id }) => {
-    const user = useSelector(state => state.user.user)
-    const { status, statusText } = useSelector(
+interface IStatusBlockProps {
+    id: number
+}
+
+const StatusBlock: React.FC<IStatusBlockProps> = ({ id }) => {
+    const user = useAppSelector(state => state.user.user)
+    const { status, statusText } = useAppSelector(
         state => state.profile.profileStatus
     )
-    const dispatch = useDispatch()
+    const dispatch = useAppDispatch()
     const [editing, setEditing] = React.useState(false)
     const [value, setValue] = React.useState('')
 

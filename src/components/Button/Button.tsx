@@ -1,7 +1,7 @@
 import React from 'react'
 import s from './Button.module.css'
 
-enum ButtonType {
+export enum ButtonType {
     BUTTON = 'button',
     SUBMIT = 'submit',
     RESET = 'reset',

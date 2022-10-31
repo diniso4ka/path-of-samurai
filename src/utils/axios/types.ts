@@ -1,8 +1,11 @@
+import { IPhotos } from '../../redux/slices/config/usersTypes'
+
 export interface IUser {
     userId: string
     lookingForAJob: boolean
     lookingForAJobDescription: string
     fullName: string
+    photos: IPhotos
     contacts: IContacts
 }
 

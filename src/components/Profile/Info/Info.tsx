@@ -1,8 +1,15 @@
 import s from './Info.module.css'
-import React from 'react'
+import React, { ChangeEvent } from 'react'
 import userPhoto from '../../../assets/images/user.png'
+import { IUser } from '../../../utils/axios/types'
 
-const Info = ({ data, isOwner, handleClick }) => {
+interface IInfoProps {
+    data: IUser
+    isOwner: boolean
+    handleClick: (e: ChangeEvent<HTMLInputElement>) => void
+}
+
+const Info: React.FC<IInfoProps> = ({ data, isOwner, handleClick }) => {
     return (
         <section className={s.info_wrapper}>
             <div className={s.photo}>
