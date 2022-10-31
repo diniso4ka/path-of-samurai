@@ -1,5 +1,6 @@
 import { endpoints } from './endpoints'
 import { api } from './instance'
+import { IUserLoginData } from './types'
 
 export const fetchUsers = async currentPage => {
     try {
@@ -30,7 +31,7 @@ export const checkIsAuth = async () => {
     }
 }
 
-export const fetchUser = async id => {
+export const fetchUser = async (id: number) => {
     try {
         const res = await api.get(endpoints.users.user(id))
         return res.data
@@ -39,7 +40,7 @@ export const fetchUser = async id => {
     }
 }
 
-export const fetchUnfollow = async id => {
+export const fetchUnfollow = async (id: number) => {
     try {
         const res = await api.delete(endpoints.users.follow(id))
         return res.data.resultCode
@@ -48,7 +49,7 @@ export const fetchUnfollow = async id => {
     }
 }
 
-export const fetchFollow = async id => {
+export const fetchFollow = async (id: number) => {
     try {
         const res = await api.post(endpoints.users.follow(id))
         return res.data.resultCode
@@ -57,7 +58,7 @@ export const fetchFollow = async id => {
     }
 }
 
-export const fetchGetStatus = async id => {
+export const fetchGetStatus = async (id: number) => {
     try {
         const res = await api.get(endpoints.profile.getStatus(id))
         return res.data
@@ -66,7 +67,7 @@ export const fetchGetStatus = async id => {
     }
 }
 
-export const fetchSetStatus = async text => {
+export const fetchSetStatus = async (text: string) => {
     try {
         const res = await api.put(endpoints.profile.setStatus, {
             status: text,
@@ -77,7 +78,7 @@ export const fetchSetStatus = async text => {
     }
 }
 
-export const fetchSetPhoto = async formData => {
+export const fetchSetPhoto = async (formData: FormData) => {
     try {
         const res = await api.put(endpoints.profile.setPhoto, formData, {
             headers: {
@@ -90,7 +91,7 @@ export const fetchSetPhoto = async formData => {
     }
 }
 
-export const fetchLogin = async user => {
+export const fetchLogin = async (user: IUserLoginData) => {
     try {
         const res = await api.post(endpoints.me.login, {
             email: user.email,

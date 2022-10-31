@@ -4,7 +4,7 @@ import {
     fetchLogin,
     fetchLogout,
 } from '../../utils/axios/requests'
-import { IAuthData, IUser, IUserData, Status } from './config/userTypes'
+import { IAuthData, IUserData, Status } from './config/userTypes'
 
 export const checkAuthData = createAsyncThunk(
     'user/setAuthDataStatus',
@@ -22,7 +22,7 @@ export const checkAuthData = createAsyncThunk(
 
 export const loginAuth = createAsyncThunk(
     'user/loginAuthStatus',
-    async user => {
+    async (user: any) => {
         const res = await fetchLogin(user)
         console.log(res)
         return res.data
