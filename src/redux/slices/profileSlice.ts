@@ -6,17 +6,23 @@ import {
 } from '../../utils/axios/requests'
 import { IPost, IProfileStatus, Status } from './config/profileTypes'
 
-export const getStatus = createAsyncThunk('profile/getStatus', async id => {
-    return await fetchGetStatus(id).then(res => res)
-})
+export const getStatus = createAsyncThunk(
+    'profile/getStatus',
+    async (id: number) => {
+        return await fetchGetStatus(id).then(res => res)
+    }
+)
 
-export const setStatus = createAsyncThunk('profile/setStatus', async text => {
-    return await fetchSetStatus(text).then(res => res)
-})
+export const setStatus = createAsyncThunk(
+    'profile/setStatus',
+    async (text: string) => {
+        return await fetchSetStatus(text).then(res => res)
+    }
+)
 
 export const setPhoto = createAsyncThunk(
     'profile/setPhotoStatus',
-    async formData => {
+    async (formData: FormData) => {
         return await fetchSetPhoto(formData).then(res => res)
     }
 )

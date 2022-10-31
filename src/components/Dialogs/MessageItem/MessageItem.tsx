@@ -1,7 +1,12 @@
 import s from './MessageItem.module.css'
 import React from 'react'
 
-const MessageItem = ({ avatar, name, text }) => {
+interface IMessageItem {
+    name: string
+    text: string
+}
+
+const MessageItem: React.FC<IMessageItem> = ({ name, text }) => {
     return (
         <section className={s.wrapper}>
             <div>

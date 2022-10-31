@@ -8,7 +8,7 @@ import SendMessageBlock from './SendMessageBlock'
 let mapStateToProps = state => {
     return {
         newMessageText: state.dialogs.newMessageText,
-        username: state.user.user,
+        username: state.user.user.login,
     }
 }
 

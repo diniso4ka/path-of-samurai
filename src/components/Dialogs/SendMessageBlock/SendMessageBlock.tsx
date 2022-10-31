@@ -1,13 +1,20 @@
 import React from 'react'
 import s from './SendMessageBlock.module.css'
 
-const SendMessageBlock = ({
+interface ISendMessageBlock {
+    username: string
+    newMessageText: string
+    sendMessage: (name: string) => void
+    onTextChange: (text: string) => void
+}
+
+const SendMessageBlock: React.FC<ISendMessageBlock> = ({
     username,
     sendMessage,
     onTextChange,
     newMessageText,
 }) => {
-    const newMessageElement = React.useRef()
+    const newMessageElement = React.useRef(null)
     return (
         <section className={s.wrapper}>
             <input
@@ -17,7 +24,7 @@ const SendMessageBlock = ({
                 className={s.text_input}
                 type='text'
             />
-            <button onClick={() => sendMessage(username.login)}>send</button>
+            <button onClick={() => sendMessage(username)}>send</button>
         </section>
     )
 }
