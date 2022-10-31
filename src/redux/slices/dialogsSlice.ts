@@ -1,6 +1,13 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { IDialog, IMessage } from './config/dialogsTypes'
 
-const initialState = {
+interface IInitialState {
+    dialogs: IDialog[]
+    messages: IMessage[]
+    newMessageText: string
+}
+
+const initialState: IInitialState = {
     dialogs: [
         {
             name: 'denis',
@@ -17,10 +24,10 @@ const dialogsSlice = createSlice({
     name: 'dialogs',
     initialState,
     reducers: {
-        updateNewMessageText: (state, action) => {
+        updateNewMessageText: (state, action: PayloadAction<string>) => {
             state.newMessageText = action.payload
         },
-        sendMessage: (state, action) => {
+        sendMessage: (state, action: PayloadAction<string>) => {
             const newMessage = {
                 id: state.messages.length,
                 message: state.newMessageText,

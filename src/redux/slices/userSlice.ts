@@ -1,9 +1,10 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {
     checkIsAuth,
     fetchLogin,
     fetchLogout,
 } from '../../utils/axios/requests'
+import { IAuthData, IUser, IUserData, Status } from './config/userTypes'
 
 export const checkAuthData = createAsyncThunk(
     'user/setAuthDataStatus',
@@ -35,9 +36,15 @@ export const logoutAuth = createAsyncThunk(
     }
 )
 
-const initialState = {
+interface IInitialState {
+    user: null | IUserData
+    status: Status
+    validError: string
+}
+
+const initialState: IInitialState = {
     user: null,
-    status: 'loading',
+    status: Status.LOADING,
     validError: '',
 }
 
@@ -48,43 +55,49 @@ const userSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(checkAuthData.pending, (state, action) => {
             state.user = null
-            state.status = 'loading'
+            state.status = Status.LOADING
         }),
-            builder.addCase(checkAuthData.fulfilled, (state, action) => {
-                state.user =
-                    action.payload === null ? null : { ...action.payload }
-                state.status = 'success'
-            }),
+            builder.addCase(
+                checkAuthData.fulfilled,
+                (state, action: PayloadAction<IUserData>) => {
+                    state.user =
+                        action.payload === null ? null : { ...action.payload }
+                    state.status = Status.SUCCESS
+                }
+            ),
             builder.addCase(checkAuthData.rejected, (state, action) => {
                 state.user = null
-                state.status = 'error'
+                state.status = Status.ERROR
             }),
             builder.addCase(loginAuth.pending, (state, action) => {
                 state.user = null
-                state.status = 'loading'
+                state.status = Status.LOADING
             }),
-            builder.addCase(loginAuth.fulfilled, (state, action) => {
-                if (action.payload.resultCode === 1) {
-                    state.validError = action.payload.messages
-                } else {
-                    state.validError = ''
+            builder.addCase(
+                loginAuth.fulfilled,
+                (state, action: PayloadAction<IAuthData>) => {
+                    if (action.payload.resultCode === 1) {
+                        state.validError = action.payload.messages
+                    } else {
+                        state.validError = ''
+                    }
+                    state.status = Status.SUCCESS
                 }
-                state.status = 'success'
-            }),
+            ),
             builder.addCase(loginAuth.rejected, (state, action) => {
                 state.user = null
-                state.status = 'error'
+                state.status = Status.ERROR
             }),
             builder.addCase(logoutAuth.pending, (state, action) => {
                 state.user = null
-                state.status = 'loading'
+                state.status = Status.LOADING
             }),
             builder.addCase(logoutAuth.fulfilled, (state, action) => {
-                state.status = 'success'
+                state.status = Status.SUCCESS
             }),
             builder.addCase(logoutAuth.rejected, (state, action) => {
                 state.user = null
-                state.status = 'error'
+                state.status = Status.ERROR
             })
     },
 })

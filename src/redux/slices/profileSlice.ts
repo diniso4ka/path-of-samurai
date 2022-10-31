@@ -1,9 +1,10 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {
     fetchGetStatus,
     fetchSetPhoto,
     fetchSetStatus,
 } from '../../utils/axios/requests'
+import { IPost, IProfileStatus, Status } from './config/profileTypes'
 
 export const getStatus = createAsyncThunk('profile/getStatus', async id => {
     return await fetchGetStatus(id).then(res => res)
@@ -16,13 +17,18 @@ export const setStatus = createAsyncThunk('profile/setStatus', async text => {
 export const setPhoto = createAsyncThunk(
     'profile/setPhotoStatus',
     async formData => {
-        console.log(formData)
-
         return await fetchSetPhoto(formData).then(res => res)
     }
 )
 
-const initialState = {
+interface IInitialState {
+    posts: IPost[]
+    newPostText: string
+    status: Status
+    profileStatus: IProfileStatus
+}
+
+const initialState: IInitialState = {
     posts: [
         {
             name: 'denis',
@@ -32,9 +38,9 @@ const initialState = {
         },
     ],
     newPostText: '',
-    status: 'loading',
+    status: Status.LOADING,
     profileStatus: {
-        status: 'loading',
+        status: Status.LOADING,
         statusText: 'Add new post',
     },
 }
@@ -43,7 +49,7 @@ const profileSlice = createSlice({
     name: 'profile',
     initialState,
     reducers: {
-        updateNewPostText: (state, action) => {
+        updateNewPostText: (state, action: PayloadAction<string>) => {
             state.newPostText = action.payload
         },
         addNewPost: state => {
@@ -60,34 +66,34 @@ const profileSlice = createSlice({
     extraReducers: builder => {
         builder.addCase(getStatus.pending, (state, action) => {
             state.profileStatus.statusText = ''
-            state.profileStatus.status = 'loading'
+            state.profileStatus.status = Status.LOADING
         }),
             builder.addCase(getStatus.fulfilled, (state, action) => {
                 state.profileStatus.statusText = action.payload
-                state.profileStatus.status = 'success'
+                state.profileStatus.status = Status.SUCCESS
             }),
             builder.addCase(getStatus.rejected, (state, action) => {
                 state.profileStatus.statusText = ''
-                state.profileStatus.status = 'error'
+                state.profileStatus.status = Status.ERROR
             }),
             builder.addCase(setStatus.pending, (state, action) => {
-                state.profileStatus.status = 'loading'
+                state.profileStatus.status = Status.LOADING
             }),
             builder.addCase(setStatus.fulfilled, (state, action) => {
-                state.profileStatus.status = 'success'
+                state.profileStatus.status = Status.SUCCESS
             }),
             builder.addCase(setStatus.rejected, (state, action) => {
-                state.profileStatus.status = 'error'
+                state.profileStatus.status = Status.ERROR
             }),
             builder.addCase(setPhoto.pending, (state, action) => {
-                state.profileStatus.status = 'loading'
+                state.profileStatus.status = Status.LOADING
             }),
             builder.addCase(setPhoto.fulfilled, (state, action) => {
                 console.log(action.payload)
-                state.profileStatus.status = 'success'
+                state.profileStatus.status = Status.SUCCESS
             }),
             builder.addCase(setPhoto.rejected, (state, action) => {
-                state.profileStatus.status = 'error'
+                state.profileStatus.status = Status.ERROR
             })
     },
 })

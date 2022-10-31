@@ -1,5 +1,6 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { fetchPages, fetchUsers } from '../../utils/axios/requests'
+import { IUserData, Status } from './config/usersTypes'
 
 export const fetchUsersList = createAsyncThunk(
     'users/fetchUsersStatus',
@@ -17,46 +18,56 @@ export const fetchTotalPages = createAsyncThunk(
     }
 )
 
-const initialState = {
+interface IInitialState {
+    users: IUserData[]
+    currentPage: number
+    totalPages: number | null
+    status: Status
+}
+
+const initialState: IInitialState = {
     users: [],
     currentPage: 1,
     totalPages: null,
-    status: 'loading',
+    status: Status.LOADING,
 }
 
 const usersSlice = createSlice({
     name: 'users',
     initialState,
     reducers: {
-        getCurrentPage: (state, action) => {
+        getCurrentPage: (state, action: PayloadAction<number>) => {
             state.currentPage = action.payload
         },
     },
     extraReducers: builder => {
         builder.addCase(fetchUsersList.pending, (state, action) => {
-            state.status = 'loading'
-            state.loading = true
+            Status.LOADING
         }),
-            builder.addCase(fetchUsersList.fulfilled, (state, action) => {
-                state.users = [...action.payload]
-                state.loading = false
-                state.status = 'success'
-            }),
+            builder.addCase(
+                fetchUsersList.fulfilled,
+                (state, action: PayloadAction<IUserData[]>) => {
+                    state.users = [...action.payload]
+                    state.status = Status.SUCCESS
+                }
+            ),
             builder.addCase(fetchUsersList.rejected, (state, action) => {
-                state.loading = true
-                state.status = 'error'
+                state.status = Status.ERROR
             }),
             builder.addCase(fetchTotalPages.pending, (state, action) => {
                 state.totalPages = null
-                state.status = 'loading'
+                state.status = Status.LOADING
             }),
-            builder.addCase(fetchTotalPages.fulfilled, (state, action) => {
-                state.totalPages = action.payload
-                state.status = 'success'
-            }),
+            builder.addCase(
+                fetchTotalPages.fulfilled,
+                (state, action: PayloadAction<number>) => {
+                    state.totalPages = action.payload
+                    state.status = Status.SUCCESS
+                }
+            ),
             builder.addCase(fetchTotalPages.rejected, (state, action) => {
                 state.totalPages = null
-                state.status = 'error'
+                state.status = Status.ERROR
             })
     },
 })
