@@ -1,13 +1,8 @@
 import s from './Info.module.css'
 import React from 'react'
 import userPhoto from '../../../assets/images/user.png'
-import { useDispatch } from 'react-redux'
-import { setPhoto } from '../../../redux/slices/profileSlice'
-import { checkIsAuth, handleClick } from '../../../utils/axios/requests'
-const Info = ({ data, isOwner, handleClick }) => {
-    const dispatch = useDispatch()
-    console.log(data)
 
+const Info = ({ data, isOwner, handleClick }) => {
     return (
         <section className={s.info_wrapper}>
             <div className={s.photo}>
