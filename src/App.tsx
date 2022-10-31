@@ -5,14 +5,14 @@ import { BrowserRouter } from 'react-router-dom'
 import Navbar from './components/Navbar/Navbar'
 import Sidebar from './components/Sidebar/Sidebar'
 import AppRouter from './Routes/AppRouter'
-import { useDispatch, useSelector } from 'react-redux'
 import { checkAuthData } from './redux/slices/userSlice'
 import { fetchUsersList } from './redux/slices/usersSlice'
 import { Preloader } from './components/Preloader/Preloader'
+import { useAppDispatch, useAppSelector } from './redux/hooks'
 
-function App() {
-    const dispatch = useDispatch()
-    const { user, status } = useSelector(state => state.user)
+const App: React.FC = () => {
+    const dispatch = useAppDispatch()
+    const { user, status } = useAppSelector(state => state.user)
 
     React.useEffect(() => {
         dispatch(checkAuthData())

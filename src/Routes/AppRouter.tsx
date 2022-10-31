@@ -2,10 +2,11 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 
 import { privateRoutes, publicRoutes } from './routes'
 import * as routes from '../utils/consts'
-import { useSelector } from 'react-redux'
+import React from 'react'
+import { useAppSelector } from '../redux/hooks'
 
-const AppRouter = () => {
-    const user = useSelector(state => state.user)
+const AppRouter: React.FC = () => {
+    const user = useAppSelector(state => state.user)
     return user.user?.id ? (
         <Routes>
             {privateRoutes.map(({ path, Component }) => (

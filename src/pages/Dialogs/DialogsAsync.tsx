@@ -1,2 +1,4 @@
 import React from 'react'
-export const DialogsAsync = React.lazy(() => import('./Dialogs'))
+export const DialogsAsync: React.LazyExoticComponent<React.FC<{}>> = React.lazy(
+    () => import('./Dialogs')
+)

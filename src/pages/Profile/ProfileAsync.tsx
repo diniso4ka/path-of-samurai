@@ -1,2 +1,4 @@
 import React from 'react'
-export const ProfileAsync = React.lazy(() => import('./Profile'))
+export const ProfileAsync: React.LazyExoticComponent<React.FC<{}>> = React.lazy(
+    () => import('./Profile')
+)

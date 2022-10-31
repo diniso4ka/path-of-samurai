@@ -51,7 +51,7 @@ const Profile: React.FC = () => {
     return (
         <main className={`${s.profile_wrapper} ${s.page_wrapper}`}>
             <Info handleClick={onUploadFile} data={data} isOwner={!id} />
-            <StatusBlock id={id ? id : user.id} />
+            <StatusBlock id={id ? +id : user.id} />
             <PostBlock />
         </main>
     )
