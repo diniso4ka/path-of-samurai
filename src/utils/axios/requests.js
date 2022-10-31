@@ -45,6 +45,15 @@ export const fetchSetStatus = async text => {
     return res.data
 }
 
+export const fetchSetPhoto = async formData => {
+    const res = await api.put(endpoints.profile.setPhoto, formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    })
+    return res.data
+}
+
 export const fetchLogin = async user => {
     const res = await api.post(endpoints.me.login, {
         email: user.email,

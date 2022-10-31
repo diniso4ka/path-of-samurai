@@ -8,9 +8,15 @@
     margin: 0 0 0 15px;
 }
 
+.photo {
+    display: flex;
+    flex-direction: column;
+}
+
 .avatar {
     width: var(--avatar-width);
     height: var(--avatar-height);
+    margin: 0 0 20px 0;
 }
 
 .text__name {

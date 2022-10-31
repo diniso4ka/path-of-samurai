@@ -1,5 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { fetchGetStatus, fetchSetStatus } from '../../utils/axios/requests'
+import {
+    fetchGetStatus,
+    fetchSetPhoto,
+    fetchSetStatus,
+} from '../../utils/axios/requests'
 
 export const getStatus = createAsyncThunk('profile/getStatus', async id => {
     return await fetchGetStatus(id).then(res => res)
@@ -9,6 +13,15 @@ export const setStatus = createAsyncThunk('profile/setStatus', async text => {
     return await fetchSetStatus(text).then(res => res)
 })
 
+export const setPhoto = createAsyncThunk(
+    'profile/setPhotoStatus',
+    async formData => {
+        console.log(formData)
+
+        return await fetchSetPhoto(formData).then(res => res)
+    }
+)
+
 const initialState = {
     posts: [
         {
@@ -16,25 +29,6 @@ const initialState = {
             avatar: 'https://www.kino-teatr.ru/news/9262/92315.jpg',
             message: 'Hello',
             id: 1,
-        },
-        { name: 'lesha', avatar: '', message: 'Hello i am shrek', id: 2 },
-        {
-            name: 'sava',
-            avatar: 'https://www.kino-teatr.ru/news/9262/92315.jpg',
-            message: 'No i am shrek',
-            id: 3,
-        },
-        {
-            name: 'jenya',
-            avatar: 'https://www.kino-teatr.ru/news/9262/92315.jpg',
-            message: 'Ouuououwh kirusma',
-            id: 4,
-        },
-        {
-            name: 'kolya',
-            avatar: 'https://avatars.mds.yandex.net/get-kinopoisk-post-img/1362954/b24837b874a652f842b387fc40a65ce6/1920x1080',
-            message: 'Hello no no no no',
-            id: 5,
         },
     ],
     newPostText: '',
@@ -83,6 +77,16 @@ const profileSlice = createSlice({
                 state.profileStatus.status = 'success'
             }),
             builder.addCase(setStatus.rejected, (state, action) => {
+                state.profileStatus.status = 'error'
+            }),
+            builder.addCase(setPhoto.pending, (state, action) => {
+                state.profileStatus.status = 'loading'
+            }),
+            builder.addCase(setPhoto.fulfilled, (state, action) => {
+                console.log(action.payload)
+                state.profileStatus.status = 'success'
+            }),
+            builder.addCase(setPhoto.rejected, (state, action) => {
                 state.profileStatus.status = 'error'
             })
     },

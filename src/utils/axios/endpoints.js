@@ -11,5 +11,6 @@ export const endpoints = {
     profile: {
         getStatus: id => `/profile/status/${id}`,
         setStatus: `/profile/status`,
+        setPhoto: 'profile/photo',
     },
 }

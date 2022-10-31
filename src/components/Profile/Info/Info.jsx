@@ -1,14 +1,24 @@
 import s from './Info.module.css'
 import React from 'react'
 import userPhoto from '../../../assets/images/user.png'
-const Info = ({ data }) => {
+import { useDispatch } from 'react-redux'
+import { setPhoto } from '../../../redux/slices/profileSlice'
+import { checkIsAuth, handleClick } from '../../../utils/axios/requests'
+const Info = ({ data, isOwner, handleClick }) => {
+    const dispatch = useDispatch()
     console.log(data)
+
     return (
         <section className={s.info_wrapper}>
-            <img
-                src={data.photos.large ? data.photos.large : userPhoto}
-                className={s.avatar}
-            ></img>
+            <div className={s.photo}>
+                <img
+                    src={data.photos.large ? data.photos.large : userPhoto}
+                    className={s.avatar}
+                />
+                {isOwner && (
+                    <input onChange={e => handleClick(e)} type={'file'} />
+                )}
+            </div>
             <div className={s.text_wrapper}>
                 <p className={s.text__name}>{data.fullName}</p>
                 <ul className={s.contacts}>
