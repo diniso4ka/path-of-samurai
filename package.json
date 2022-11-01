@@ -2,7 +2,7 @@
   "name": "path-of-samurai",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://diniso4ka.github.io/path-of-samurai/",
+  "homepage": "https://path-of-samurai.vercel.app",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.6",
     "@testing-library/jest-dom": "^5.16.5",
